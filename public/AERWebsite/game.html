@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Amazing Escape Room Home</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://kit.fontawesome.com/b09f28c6d0.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.sound.min.js"></script>
+</head>
+
+<body>
+	<div class="vignette">
+
+
+		<!---------------------------------------------------------------------------->
+		<!--------------------------------Nav Bar------------------------------------->
+		<!---------------------------------------------------------------------------->
+
+		<section class="navBarContainer">
+			<a href="index.html">
+				<img alt="Amazing Escape Room Logo" class="navLogo" src="Assets/AER_Logo.png" title="AER logo">
+			</a>
+			<a href="javascript:void(0);" class="navMap" onclick="NavDropdown()">
+				<i id="MapIcon" class="fas fa-map-marked-alt fa-1g"></i>
+			</a>
+			<div id="NavDropdown">
+				 <ul>
+                    <li class="navItem NavState">California</li>
+                    <li class="navItem NavCity"><a href="northridge.html">Northridge</a></li>
+                    <li class="navItem NavState">New Jersey</li>
+                    <li class="navItem NavCity"><a href="bloomfield.html">Bloomfield</a></li>
+                    <li class="navItem NavCity"><a href="cherryHill.html">Cherry Hill</a></li>
+                    <li class="navItem NavCity"><a href="freehold.html">Freehold</a></li>
+                    <li class="navItem NavCity"><a href="greenBrook.html">Green Brook</a></li>
+                    <li class="navItem NavCity"><a href="montclair.html">Montclair</a></li>
+                    <li class="navItem NavCity"><a href="princeton.html">Princeton</a></li>
+                    <li class="navItem NavState">New York</li>
+                    <li class="navItem NavCity"><a href="statenIsland.html">Staten Island</a></li>
+                    <li class="navItem NavState">Pennsylvania</li>
+                    <li class="navItem NavCity"><a href="kingOfPrussia.html">King of Prussia</a></li>
+                    <li class="navItem NavCity"><a href="philadelphia.html">Philadelphia</a></li>
+                </ul>
+			</div>
+		</section>
+		<div id="navBarSpacer"></div>
+
+		<!---------------------------------------------------------------------------->
+		<!---------------------------------Game--------------------------------------->
+		<!---------------------------------------------------------------------------->
+		<section class="containerMiddle gameOuter">
+			<div class="gameBorder">
+				<div class="gameInner">
+
+				</div>
+			</div>
+		</section>
+		<!---------------------------------------------------------------------------->
+		<!---------------------------------Footer------------------------------------->
+		<!---------------------------------------------------------------------------->
+		<footer>
+			<center>
+				<a href="index.html"><img class="footerLogoHome" src="Assets/AER_Logo.png" title="AER logo" alt="AERlogo"></a>
+			</center>
+			<p class="copyright">&copy;&nbsp;Copyright Amazing Escape Room, LLC , 2017</p>
+		</footer>
+		<script src="game.js"></script>
+	</div>
+</body></html>

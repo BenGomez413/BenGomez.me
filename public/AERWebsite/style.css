@@ -1,0 +1,1498 @@
+/*------------------------------------------------------------------------------------------*/
+/*``````````````````````````````````````````````````````````````````````````````````````````*/
+/*                                             General                                      */
+/*__________________________________________________________________________________________*/
+/*------------------------------------------------------------------------------------------*/
+@import url('https://fonts.googleapis.com/css?family=Boogaloo|Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+/*----------------------------------*/
+/*Disable text highlighting on button elements*/
+button {
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: -moz-none;
+	-o-user-select: none;
+	user-select: none;
+}
+
+/*----------------------------------*/
+
+
+html,
+body {
+	margin: 0;
+	border: 0;
+	padding: 0;
+	--AERcolor: rgb(178, 30, 40);
+	--primary-color: white;
+	--secondary-color: black;
+	--background: rgb(51, 51, 51);
+	--navbar-color: rgb(51, 51, 51);
+	--call-to-action: rgb(227, 29, 28);
+	--call-to-hover: rgb(255, 71, 70);
+}
+
+
+body {
+	background-color: var(--background);
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192' viewBox='0 0 192 192'%3E%3Cpath fill='rgb(255,255,255)' fill-opacity='0.4' d='M192 15v2a11 11 0 0 0-11 11c0 1.94 1.16 4.75 2.53 6.11l2.36 2.36a6.93 6.93 0 0 1 1.22 7.56l-.43.84a8.08 8.08 0 0 1-6.66 4.13H145v35.02a6.1 6.1 0 0 0 3.03 4.87l.84.43c1.58.79 4 .4 5.24-.85l2.36-2.36a12.04 12.04 0 0 1 7.51-3.11 13 13 0 1 1 .02 26 12 12 0 0 1-7.53-3.11l-2.36-2.36a4.93 4.93 0 0 0-5.24-.85l-.84.43a6.1 6.1 0 0 0-3.03 4.87V143h35.02a8.08 8.08 0 0 1 6.66 4.13l.43.84a6.91 6.91 0 0 1-1.22 7.56l-2.36 2.36A10.06 10.06 0 0 0 181 164a11 11 0 0 0 11 11v2a13 13 0 0 1-13-13 12 12 0 0 1 3.11-7.53l2.36-2.36a4.93 4.93 0 0 0 .85-5.24l-.43-.84a6.1 6.1 0 0 0-4.87-3.03H145v35.02a8.08 8.08 0 0 1-4.13 6.66l-.84.43a6.91 6.91 0 0 1-7.56-1.22l-2.36-2.36A10.06 10.06 0 0 0 124 181a11 11 0 0 0-11 11h-2a13 13 0 0 1 13-13c2.47 0 5.79 1.37 7.53 3.11l2.36 2.36a4.94 4.94 0 0 0 5.24.85l.84-.43a6.1 6.1 0 0 0 3.03-4.87V145h-35.02a8.08 8.08 0 0 1-6.66-4.13l-.43-.84a6.91 6.91 0 0 1 1.22-7.56l2.36-2.36A10.06 10.06 0 0 0 107 124a11 11 0 0 0-22 0c0 1.94 1.16 4.75 2.53 6.11l2.36 2.36a6.93 6.93 0 0 1 1.22 7.56l-.43.84a8.08 8.08 0 0 1-6.66 4.13H49v35.02a6.1 6.1 0 0 0 3.03 4.87l.84.43c1.58.79 4 .4 5.24-.85l2.36-2.36a12.04 12.04 0 0 1 7.51-3.11A13 13 0 0 1 81 192h-2a11 11 0 0 0-11-11c-1.94 0-4.75 1.16-6.11 2.53l-2.36 2.36a6.93 6.93 0 0 1-7.56 1.22l-.84-.43a8.08 8.08 0 0 1-4.13-6.66V145H11.98a6.1 6.1 0 0 0-4.87 3.03l-.43.84c-.79 1.58-.4 4 .85 5.24l2.36 2.36a12.04 12.04 0 0 1 3.11 7.51A13 13 0 0 1 0 177v-2a11 11 0 0 0 11-11c0-1.94-1.16-4.75-2.53-6.11l-2.36-2.36a6.93 6.93 0 0 1-1.22-7.56l.43-.84a8.08 8.08 0 0 1 6.66-4.13H47v-35.02a6.1 6.1 0 0 0-3.03-4.87l-.84-.43c-1.59-.8-4-.4-5.24.85l-2.36 2.36A12 12 0 0 1 28 109a13 13 0 1 1 0-26c2.47 0 5.79 1.37 7.53 3.11l2.36 2.36a4.94 4.94 0 0 0 5.24.85l.84-.43A6.1 6.1 0 0 0 47 84.02V49H11.98a8.08 8.08 0 0 1-6.66-4.13l-.43-.84a6.91 6.91 0 0 1 1.22-7.56l2.36-2.36A10.06 10.06 0 0 0 11 28 11 11 0 0 0 0 17v-2a13 13 0 0 1 13 13c0 2.47-1.37 5.79-3.11 7.53l-2.36 2.36a4.94 4.94 0 0 0-.85 5.24l.43.84A6.1 6.1 0 0 0 11.98 47H47V11.98a8.08 8.08 0 0 1 4.13-6.66l.84-.43a6.91 6.91 0 0 1 7.56 1.22l2.36 2.36A10.06 10.06 0 0 0 68 11 11 11 0 0 0 79 0h2a13 13 0 0 1-13 13 12 12 0 0 1-7.53-3.11l-2.36-2.36a4.93 4.93 0 0 0-5.24-.85l-.84.43A6.1 6.1 0 0 0 49 11.98V47h35.02a8.08 8.08 0 0 1 6.66 4.13l.43.84a6.91 6.91 0 0 1-1.22 7.56l-2.36 2.36A10.06 10.06 0 0 0 85 68a11 11 0 0 0 22 0c0-1.94-1.16-4.75-2.53-6.11l-2.36-2.36a6.93 6.93 0 0 1-1.22-7.56l.43-.84a8.08 8.08 0 0 1 6.66-4.13H143V11.98a6.1 6.1 0 0 0-3.03-4.87l-.84-.43c-1.59-.8-4-.4-5.24.85l-2.36 2.36A12 12 0 0 1 124 13a13 13 0 0 1-13-13h2a11 11 0 0 0 11 11c1.94 0 4.75-1.16 6.11-2.53l2.36-2.36a6.93 6.93 0 0 1 7.56-1.22l.84.43a8.08 8.08 0 0 1 4.13 6.66V47h35.02a6.1 6.1 0 0 0 4.87-3.03l.43-.84c.8-1.59.4-4-.85-5.24l-2.36-2.36A12 12 0 0 1 179 28a13 13 0 0 1 13-13zM84.02 143a6.1 6.1 0 0 0 4.87-3.03l.43-.84c.8-1.59.4-4-.85-5.24l-2.36-2.36A12 12 0 0 1 83 124a13 13 0 1 1 26 0c0 2.47-1.37 5.79-3.11 7.53l-2.36 2.36a4.94 4.94 0 0 0-.85 5.24l.43.84a6.1 6.1 0 0 0 4.87 3.03H143v-35.02a8.08 8.08 0 0 1 4.13-6.66l.84-.43a6.91 6.91 0 0 1 7.56 1.22l2.36 2.36A10.06 10.06 0 0 0 164 107a11 11 0 0 0 0-22c-1.94 0-4.75 1.16-6.11 2.53l-2.36 2.36a6.93 6.93 0 0 1-7.56 1.22l-.84-.43a8.08 8.08 0 0 1-4.13-6.66V49h-35.02a6.1 6.1 0 0 0-4.87 3.03l-.43.84c-.79 1.58-.4 4 .85 5.24l2.36 2.36a12.04 12.04 0 0 1 3.11 7.51A13 13 0 1 1 83 68a12 12 0 0 1 3.11-7.53l2.36-2.36a4.93 4.93 0 0 0 .85-5.24l-.43-.84A6.1 6.1 0 0 0 84.02 49H49v35.02a8.08 8.08 0 0 1-4.13 6.66l-.84.43a6.91 6.91 0 0 1-7.56-1.22l-2.36-2.36A10.06 10.06 0 0 0 28 85a11 11 0 0 0 0 22c1.94 0 4.75-1.16 6.11-2.53l2.36-2.36a6.93 6.93 0 0 1 7.56-1.22l.84.43a8.08 8.08 0 0 1 4.13 6.66V143h35.02z'%3E%3C/path%3E%3C/svg%3E");
+	margin: 0;
+	border: 0;
+	padding: 0;
+	font-family: 'Roboto', sans-serif;
+	color: black;
+
+}
+
+.vignette {
+	background: radial-gradient(circle, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+	min-height: 100vh;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+
+header {
+	font-family: 'Boogaloo', cursive;
+	font-size: 30px;
+	background: var(--AERcolor);
+	color: var(--primary-color);
+	border-radius: 5px 5px 0px 0px;
+
+}
+
+h1 {
+	font-family: 'Boogaloo', cursive;
+	font-size: 30px;
+	margin: 0
+}
+
+
+h2 {
+	font-family: 'Boogaloo', cursive;
+	font-size: 30px;
+	color: var(--AERcolor);
+	margin: 0
+}
+
+h3 {
+	margin: 0;
+}
+
+button {
+	background-color: var(--call-to-action);
+	float: right;
+	border: none;
+	border-radius: 5px;
+	padding: 15px 20px;
+	font-family: 'Boogaloo', cursive;
+	font-size: 18px;
+	color: var(--primary-color);
+}
+
+.containerTop {
+	background: none;
+	width: 90%;
+	margin: 0px auto 0px auto;
+}
+
+.containerMiddle {
+	background: var(--primary-color);
+	width: 90%;
+	margin: 0px auto 0px auto;
+	border-radius: 0px 0px 0px 0px;
+	box-shadow: -15px 0px 10px rgba(0, 0, 0, 0.50), 15px 0px 10px rgba(0, 0, 0, 0.50);
+}
+
+.containerMiddle header {
+	text-align: center;
+	margin: 0;
+	padding: 10px;
+	box-shadow: 0px 5px 0px rgb(69, 12, 12);
+}
+
+
+.containerMiddle p {
+	margin: 0;
+}
+
+
+.containerBottom {
+	background: var(--primary-color);
+	width: 90%;
+	margin: 0px auto 0px auto;
+	box-shadow: -15px 15px 10px rgba(0, 0, 0, 0.50), 15px 15px 10px rgba(0, 0, 0, 0.50);
+
+}
+
+.containerSolo {
+	background: var(--primary-color);
+	width: 90%;
+	margin: 0px auto 0px auto;
+	border-radius: 10px 10px 10px 10px;
+	box-shadow: -15px 15px 10px rgba(0, 0, 0, 0.50), 15px 15px 10px rgba(0, 0, 0, 0.50);
+}
+
+
+
+/*------------ <NavBar> ------------*/
+.navBarContainer {
+	z-index: 5;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 50px;
+	background-color: var(--navbar-color);
+	border-bottom: solid var(--primary-color) 1px;
+	box-shadow: 0px 5px 8px rgb(23, 23, 23);
+	overflow: visible;
+}
+
+.navLogo {
+	position: absolute;
+	top: 5px;
+	left: 5%;
+	width: 260px;
+	z-index: 6;
+}
+
+.navMap {
+	z-index: 10;
+	position: absolute;
+	right: 5%;
+	margin 15px;
+}
+
+#MapIcon {
+	font-size: 28px;
+	padding: 10px;
+	text-decoration: none;
+	color: white;
+}
+
+#MapIcon:hover {
+	color: var(--AERcolor);
+}
+
+#MapIcon:hover .dropDownContainer {
+	display: block;
+}
+
+#NavDropdown {
+	display: none;
+	background: rgba(18, 18, 18, 0.98);
+	transform: translateY(50px);
+	position: absolute;
+	right: 0;
+	width: 250px;
+	margin: auto;
+	border-top: 1px solid white;
+	border-radius: 0px 0px 0px 5px;
+	box-shadow: -15px 15px 10px rgba(0, 0, 0, 0.50), 15px 15px 10px rgba(0, 0, 0, 0.50);
+}
+
+#NavDropdown ul {
+	padding: 0;
+}
+
+.navItem {
+	position: block;
+	margin: auto;
+	list-style-type: none;
+	color: var(--primary-color);
+}
+
+.NavState {
+	font-family: 'Boogaloo', cursive;
+	font-size: 30px;
+	color: var(--primary-color);
+	background: var(--AERcolor);
+	list-style-type: none;
+	padding: 5px 10px;
+	box-shadow: 0px 5px 0px rgb(69, 12, 12);
+}
+
+.NavCity {
+	padding: 5px 15px;
+}
+
+.NavCity a {
+	text-decoration: none;
+	font-size: 25px;
+	color: var(--primary-color);
+}
+
+.NavCity:hover:not(#active) {
+	transform: translateX(15px);
+	cursor: pointer;
+}
+
+#active {
+	background-color: rgb(227, 29, 28);
+}
+
+#navBarSpacer {
+	height: 50px;
+}
+
+
+
+/*------------ <Footer> ------------*/
+footer {
+	background-color: rgb(51, 51, 51);
+	color: var(--primary-color);
+	width: 100%;
+	border-top: 1px solid var(--primary-color);
+}
+
+.footerFlex {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	width: 60%;
+	margin: auto;
+	padding: 40px 20px 40px 20px;
+}
+
+.footerInfo,
+.footerInfo span {
+	text-align: left;
+	color: var(--primary-color);
+	margin-left: 10px;
+	line-height: 140%;
+}
+
+.footerInfo a {
+	color: var(--primary-color);
+	text-decoration: none;
+}
+
+.footerSocials {
+	margin-top: 8px;
+}
+
+.footerSocials a {
+	font-size: 40px;
+	color: var(--primary-color);
+	text-decoration: none;
+	padding-right: 20px;
+}
+
+.footerSocials a:hover {
+	color: var(--AERcolor);
+}
+
+.footerLogoContainer {
+	text-align: center;
+	margin: auto;
+	width: 100%;
+}
+
+.footer img {
+	vertical-align: middle;
+}
+
+.copyright {
+	margin: 0px;
+	padding-bottom: 40px;
+	padding-top: 20px;
+	border-top: 1px solid #818181;
+	text-align: center;
+	color: #818181;
+}
+
+.footerLogoHome {
+	padding: 20px;
+}
+
+@media (max-width: 767px) {
+	footer {
+		margin: 0px;
+		padding: 0px;
+	}
+
+	.footerFlex {
+		display: grid;
+		grid-template-columns: 1fr;
+		text-align: center;
+		width: 100%;
+		margin: auto;
+		padding: 25px 0px;
+	}
+
+	.footerInfo,
+	.footerInfo span {
+		text-align: center;
+		margin: auto;
+	}
+
+	.footerLogoContainer {
+		text-align: center;
+	}
+
+	#FooterLogo {
+		max-width: 250px;
+	}
+
+	.footerLogoHome {
+		max-width: 250px;
+		padding: 10px;
+	}
+
+}
+
+/*------------ </Footer> ------------*/
+
+/*------------ <Scroll Bar> ------------*/
+/* width */
+::-webkit-scrollbar {
+	width: 0px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background-color: rgb(15, 15, 15);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
+
+/*------------ </Scroll Bar> ------------*/
+
+
+
+/*------------------------------------------------------------------------------------------*/
+/*``````````````````````````````````````````````````````````````````````````````````````````*/
+/*                                             Home                                         */
+/*__________________________________________________________________________________________*/
+/*------------------------------------------------------------------------------------------*/
+/*<topBanner>*/
+#topBanner {
+	text-align: center;
+	padding: 16vh 0;
+	background-image: url('Assets/repeatableBackground.svg');
+	background-size: 150px;
+}
+
+
+#topBanner h1 {
+	margin: 0;
+}
+
+/*---------------------<locations>---------*/
+
+
+.State {
+	padding: 0px;
+	text-align: center;
+}
+
+.State h1 {
+	margin: 10px auto 0 auto;
+	text-decoration: underline;
+	font-size: 35px;
+}
+
+.State a {
+	text-decoration: none;
+}
+
+.city a {
+	color: white;
+}
+
+.city {
+	background: var(--AERcolor);
+	width: 150px;
+	height: 50px;
+	margin: 0px auto 20px auto;
+	border-radius: 10px;
+	padding: 0px;
+	color: white;
+	text-align: center;
+	line-height: 50px;
+	box-shadow: 0px 10px 0px rgb(69, 12, 12), 0px 15px 10px rgb(0, 0, 0);
+}
+
+.city:hover {
+	cursor: pointer;
+	transform: translateY(-2px);
+	box-shadow: 0px 12px 0px rgb(69, 12, 12), 0px 17px 10px rgb(0, 0, 0);
+}
+
+.city:active {
+	cursor: pointer;
+	transform: translateY(5px);
+	box-shadow: 0px 5px 0px rgb(69, 12, 12), 0px 10px 10px rgb(0, 0, 0);
+}
+
+
+.TwoColumn {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	padding: 0px 20% 20px 20%;
+}
+
+@media only screen and (max-width: 700px) {
+	.TwoColumn {
+		padding: 0px 0px;
+	}
+}
+
+@media only screen and (max-width: 400px) {
+	.TwoColumn {
+		display: grid;
+		grid-template-columns: 1fr;
+
+	}
+}
+
+#LocationSelectionMap {
+	background-image: url(Assets/MapBackground.png);
+	background-position: center;
+	background-repeat: repeat;
+	background-size: 100vh;
+	box-shadow: 0px -5px 0px rgb(69, 12, 12);
+}
+
+
+
+
+
+/*---------------------<locations>---------*/
+
+/*---------------------------About---------*/
+#About {
+	text-align: center;
+}
+
+#About header {
+	margin: 0;
+	padding: 10px;
+	box-shadow: 0px 5px 0px rgb(69, 12, 12);
+}
+
+#About p {
+	margin: 0;
+	padding: 30px 10%;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+#About h1,
+#CorpBirthdays h1 {
+	padding-bottom: 20px;
+
+}
+
+/*----------Corporate & Birthdays---------*/
+#CorpBirthdays {
+	text-align: center;
+}
+
+#CorpBirthdays p {
+	font-weight: bold;
+	padding: 10px
+}
+
+/*---------------------------More---------*/
+#More {
+	text-align: center;
+}
+
+#More header {
+	margin: 0;
+	padding: 10px;
+	box-shadow: 0px 5px 0px rgb(69, 12, 12);
+}
+
+#BTHlogo img {
+	margin: 20px;
+	width: 50%;
+}
+
+
+
+
+/*------------------------------------------------------------------------------------------*/
+/*``````````````````````````````````````````````````````````````````````````````````````````*/
+/*                                      LOCATION PAGES                                      */
+/*__________________________________________________________________________________________*/
+/*------------------------------------------------------------------------------------------*/
+
+/*--------------------------------------------------*/
+/*                   Room Images                    */
+/*--------------------------------------------------*/
+
+/*---Northridge---*/
+.Roaring20s {
+	background-image: url("Assets/Northridge/Roaring%2020's.jpg");
+}
+
+.Roaring20sHeader {
+	background: #164018;
+}
+
+.Starlight {
+	background-image: url("Assets/Northridge/Starlight%20Lounge.jpg");
+}
+
+.StarlightHeader {
+	background: #9d5710;
+}
+
+.Office {
+	background-image: url("Assets/Northridge/The%20Office%20RtE.jpg");
+
+}
+
+.OfficeHeader {
+	background: #0e2e4e;
+}
+
+.CorpX {
+	background-image: url("Assets/Northridge/Corporation%20X.jpg");
+}
+
+.CorpXHeader {
+	background: #000000;
+}
+
+.Dragon {
+	background-image: url("Assets/Northridge/Mystery%20of%20the%20Red%20Dragon.jpg");
+}
+
+.DragonHeader {
+	background: rgb(227, 29, 28);
+}
+
+/*---Bloomfield---*/
+.DownTheRabbitHole {
+	background-image: url("Assets/Bloomfield/RabbitHole.jpg");
+	background-size: cover;
+}
+
+.DownTheRabbitHoleHeader {
+	background: #157f8d;
+}
+
+.SearchForTheGrail {
+	background-image: url("Assets/Bloomfield/Grail.jpg");
+	background-size: cover;
+}
+
+.SearchForTheGrailHeader {
+	background: #a1c11c;
+}
+
+.GoldRush {
+	background-image: url("Assets/Bloomfield/GoldRush.jpg");
+	background-size: cover;
+}
+
+.GoldRushHeader {
+	background: #baa636;
+}
+
+.LostInSpace {
+	background-image: url("Assets/Bloomfield/LostInSpace.jpg");
+	background-size: cover;
+}
+
+.LostInSpaceHeader {
+	background: #274155;
+}
+
+.AxeCombo {
+	background-image: url("Assets/Bury%20the%20Hatchet%20Logo.png");
+	background-repeat: no-repeat;
+}
+
+.AxeComboHeader {
+	background: var(--AERcolor);
+}
+
+/*---Cherry Hill---*/
+.EhrlichsManor {
+	background-image: url("Assets/CherryHill/EManor.jpg");
+	background-size: cover;
+}
+
+.EhrlichsManorHeader {
+	background: #191b4a;
+}
+
+.Laboratory {
+	background-image: url("Assets/CherryHill/Laboratory.jpg");
+	background-size: cover;
+}
+
+.LaboratoryHeader {
+	background: #0c3114;
+}
+
+.Illusionist {
+	background-image: url("Assets/CherryHill/Illusionist.jpg");
+	background-size: cover;
+}
+
+.IllusionistHeader {
+	background: #5f1371;
+}
+
+.NightAtTheMuseum {
+	background-image: url("Assets/CherryHill/NightAtMuseum.jpg");
+	background-size: cover;
+}
+
+.NightAtTheMuseumHeader {
+	background: #5c5340;
+}
+
+.PirateShip {
+	background-image: url("Assets/CherryHill/PirateShip.jpg");
+	background-size: cover;
+}
+
+.PirateShipHeader {
+	background: #29624a;
+}
+
+.SecretMission {
+	background-image: url("Assets/CherryHill/SecretMission.jpg");
+	background-size: cover;
+}
+
+.SecretMissionHeader {
+	background: #25401f;
+}
+
+/*---Freehold---*/
+.WizardsApprentice {
+	background-image: url("Assets/Freehold/WizardsApprentice.jpg");
+	background-size: cover;
+}
+
+.WizardsApprenticeHeader {
+	background: #4d1f38;
+}
+
+.EscapeTheApartment {
+	background-image: url("Assets/Freehold/EscapeTheApartment.jpg");
+	background-size: cover;
+}
+
+.EscapeTheApartmentHeader {
+	background: #16555a;
+}
+
+.JungleEscape {
+	background-image: url("Assets/Freehold/JungleEscape.jpg");
+	background-size: cover;
+}
+
+.JungleEscapeHeader {
+	background: #2b720b;
+}
+
+.TrainHeist {
+	background-image: url("Assets/Freehold/TrainHeist.jpg");
+	background-size: cover;
+}
+
+.TrainHeistHeader {
+	background: #292929;
+}
+
+.WildWest {
+	background-image: url("Assets/Freehold/WildWest.jpg");
+	background-size: cover;
+}
+
+.WildWestHeader {
+	background: #2c160d;
+}
+
+.TimeParadox {
+	background-image: url("Assets/Freehold/TimeParadox.jpg");
+	background-size: cover;
+}
+
+.TimeParadoxHeader {
+	background: #1a144b;
+}
+
+/*---Green Brook---*/
+.BankHeist {
+	background-image: url("Assets/Greenbrook/BankHeist.jpg");
+	background-size: cover;
+}
+
+.BankHeistHeader {
+	background: #2a3643;
+}
+
+.MurderSheWrote {
+	background-image: url("Assets/Greenbrook/MurderSheWrote.jpg");
+	background-size: cover;
+}
+
+.MurderSheWroteHeader {
+	background: #331b31;
+}
+
+/*---Montclair---*/
+/*Other Rooms in another location*/
+.CrusadersAlley {
+	background-image: url("Assets/Montclair/CrusadersAlley.jpg");
+	background-size: cover;
+}
+
+.CrusadersAlleyHeader {
+	background: #186d6a;
+}
+
+.EscapeTheForest {
+	background-image: url("Assets/Montclair/EscapeTheForest.jpg");
+	background-size: cover;
+}
+
+.EscapeTheForestHeader {
+	background: #364d4a;
+}
+
+.LostRecord {
+	background-image: url("Assets/Montclair/LostRecord.jpg");
+	background-size: cover;
+}
+
+.LostRecordHeader {
+	background: #c73c1a;
+}
+
+.CaseClosed {
+	background-image: url("Assets/Montclair/CaseClosedMontclair.jpg");
+	background-size: cover;
+}
+
+.CaseClosedHeader {
+	background: var(--AERcolor);
+}
+
+/*---Montclair---*/
+/*Train heist in another location*/
+.KnightsQuest {
+	background-image: url("Assets/Princeton/KnightsQuest.jpg");
+	background-size: cover;
+}
+
+.KnightsQuestHeader {
+	background: #4e4938;
+}
+
+.NotoriousSpeakeasy {
+	background-image: url("Assets/Princeton/NotoriousSpeakeasy.jpg");
+	background-size: cover;
+}
+
+.NotoriousSpeakeasyHeader {
+	background: #1f1b18;
+}
+
+.RobberyJob {
+	background-image: url("Assets/Princeton/RobberyJob.jpg");
+	background-size: cover;
+}
+
+.RobberyJobHeader {
+	background: #641515;
+}
+
+.SecretSociety {
+	background-image: url("Assets/Princeton/SecretSociety.jpg");
+	background-size: cover;
+}
+
+.SecretSocietyHeader {
+	background: #0b0b0b;
+}
+
+/*---Montclair---*/
+/*Bank Heist and Mission Space in another location*/
+.DiamondMine {
+	background-image: url("Assets/StatenIsland/DiamondMIne.jpg");
+	background-size: cover;
+}
+
+.DiamondMineHeader {
+	background: #765713;
+}
+
+.MysteryInParis {
+	background-image: url("Assets/StatenIsland/MysteryInParis.jpg");
+	background-size: cover;
+}
+
+.MysteryInParisHeader {
+	background: #39598d;
+}
+
+/*---King Of Prussia---*/
+/*Illusionist and PirateShip in another location*/
+.SubmarineShip {
+	background-image: url("Assets/KingOfPrussia/SubmarineShip.jpg");
+	background-size: cover;
+}
+
+.SubmarineShipHeader {
+	background: #076588;
+}
+
+/*---Montclair---*/
+/*Art Gallery and Case Closed in another location*/
+.MojoRoom {
+	background-image: url("Assets/Philadelphia/MojoRoom.jpg");
+	background-size: cover;
+}
+
+.MojoRoomHeader {
+	background: #884207;
+}
+
+
+
+/*--------------------------------------------------*/
+/*                   Room General                   */
+/*--------------------------------------------------*/
+.cityHeader {
+	text-align: right;
+	margin: 0;
+	padding: 20px;
+	border-bottom: solid 5px rgb(69, 12, 12);
+	background: var(--AERcolor);
+	color: white;
+}
+
+.cityHeader a h3 {
+	font-size: 18px;
+}
+
+.cityHeader a {
+	text-decoration: none;
+	color: white;
+	font-size: 12px;
+	width: 200px;
+}
+
+.cityHeader a:hover {
+	text-shadow: 2px 2px rgb(69, 12, 12);
+}
+
+/*-------------------------------------------------------*/
+/*```````````````````````````````````````````````````````*/
+/*                    Room Selector                      */
+/*_______________________________________________________*/
+/*-------------------------------------------------------*/
+.roomSlide {
+	background-color: var(--primary-color);
+	margin: 0px auto;
+	width: 90%;
+	box-shadow: 0px 15px 10px 5px rgba(0, 0, 0, 0.86);
+}
+
+#Selector {
+	display: grid;
+	grid-auto-columns: 50px 1fr 50px;
+	grid-template-areas: "image image image"
+		"Aleft title Aright"
+		"descr descr descr";
+}
+
+/*Arrows*/
+.arrow {
+	background-color: var(--background);
+	color: white;
+	margin: auto;
+	border-radius: 0px;
+	padding: 0px;
+	width: 50px;
+	height: 70px;
+	font-size: 50px;
+	float: none;
+}
+
+.arrow:hover {
+	color: var(--AERcolor);
+	cursor: pointer;
+}
+
+/*Left*/
+.aLeft {
+	grid-area: Aleft;
+	width: 50px;
+	margin: 0;
+	padding: 0;
+	border-bottom: solid 5px #1c1c1c;
+	box-shadow: 0px -5px 10px 0px rgba(0, 0, 0, 0.86);
+}
+
+.aLeft button {
+	grid-area: left;
+	box-shadow: 0px 5px none;
+}
+
+/*Right*/
+.aRight {
+	grid-area: Aright;
+	width: 50px;
+	margin: 0;
+	padding: 0;
+	border-bottom: solid 5px #1c1c1c;
+	box-shadow: 0px -5px 10px 0px rgba(0, 0, 0, 0.86);
+}
+
+.aRight button {
+	grid-area: right;
+	box-shadow: 0px 5px none;
+}
+
+/*Image*/
+.roomImage {
+	grid-area: image;
+	width: 100%;
+	max-width: 600px;
+	height: 200px;
+	margin: auto;
+	padding: 0px;
+	background-position: center;
+}
+
+.info {
+	position: relative;
+	top: 125px;
+	color: white;
+	background-color: rgba(0, 0, 0, 0.5);
+	border-radius: 10px;
+	margin: 0px 10px;
+	width: auto;
+}
+
+.info i {
+	width: 20px;
+	padding-left: 5px;
+	text-align: center;
+}
+
+/*Room Title*/
+.roomTitle {
+	grid-area: title;
+	width: 100%;
+	height: 70px;
+	margin: 0;
+	border-bottom: solid 5px rgba(28, 28, 28, 0.15);
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 0px -5px 10px 0px rgba(0, 0, 0, 0.86);
+}
+
+.roomTitle header {
+	background-color: rgba(0, 0, 0, 0);
+	width: calc(100% - 20px);
+	margin: 0;
+	text-align: center;
+	font-size: 25px;
+	box-shadow: none;
+}
+
+/*Room Description*/
+.roomDescr {
+	grid-area: descr;
+	margin: 0;
+	padding: 5px 20px 20px 20px;
+
+
+}
+
+.roomDescr p {
+	margin-bottom: 20px;
+	padding: 5px 0px;
+	font-weight: 100;
+	text-align: justify;
+}
+
+.roomDescr h3 {
+	font-weight: bolder;
+	font-size: 20px;
+}
+
+
+.roomDescr span {
+	margin-top: 0px;
+	text-align: left;
+	font-weight: 100;
+}
+
+
+/*--------------------------------------------------*/
+/*                   Big Screen                     */
+/*--------------------------------------------------*/
+@media (min-width: 600px) {
+
+	#Selector {
+		display: grid;
+		grid-auto-columns: 50px 1fr 1fr 50px;
+		grid-auto-rows: 60px 1fr;
+		grid-template-areas:
+			"Aleft image title Aright"
+			"Aleft image descr Aright";
+	}
+
+	/*Arrow*/
+	.arrow {
+		position: relative;
+		top: 30%;
+		border: none;
+	}
+
+	/*Left*/
+	.aLeft {
+		grid-area: Aleft;
+		border: none;
+		box-shadow: none;
+	}
+
+	.aLeft button {
+		height: 120px;
+		border: none;
+		border-radius: 0px 8px 8px 0px;
+		box-shadow: 0px 8px #222222;
+	}
+
+	/*Right*/
+	.aRight {
+		grid-area: Aright;
+		border: none;
+		box-shadow: none;
+	}
+
+	.aRight button {
+		height: 120px;
+		border: none;
+		border-radius: 8px 0px 0px 8px;
+		box-shadow: 0px 8px #222222;
+	}
+
+	/*Image*/
+	.roomImage {
+		grid-area: image;
+		margin: 10px;
+		width: calc(100% - 20px);
+		height: 350px;
+		float: left;
+		border-radius: 10px 0px 0px 10px;
+	}
+
+	.info {
+		top: 275px;
+	}
+
+	/*Room Title*/
+	.roomTitle {
+		grid-area: title;
+		width: calc(100% - 10px);
+		margin: 10px 0px 0px 0px;
+		height: 50px;
+		box-shadow: none;
+		border: none;
+		border-radius: 0px 10px 0px 0px;
+	}
+
+	.roomTitle header {}
+
+	/*Description*/
+	.roomDescr {
+		grid-area: descr;
+		width: calc(100% - 10px);
+		padding: 10px 0px;
+	}
+
+	.roomDescr p {
+		display: block;
+		padding: 0px;
+	}
+
+}
+
+/*--------------------------------------------------*/
+/*                     NOTICE!                      */
+/*--------------------------------------------------*/
+.notice {
+	text-align: center;
+	font-family: 'Anton', sans-serif;
+}
+
+.noticeGrid {
+	padding: 50px;
+	display: grid;
+	grid-auto-columns: 1fr 1fr;
+	grid-template-areas:
+		'h1   mask'
+		'para mask'
+		'para addInfo';
+}
+
+.notice h1 {
+	grid-area: h1;
+	color: var(--AERcolor);
+	font-family: 'Anton', sans-serif;
+	font-size: 40px;
+	text-align: left;
+}
+
+.para {
+	grid-area: para;
+	text-align: justify;
+	margin-right: 20px;
+}
+
+.notice p {
+	font-size: 20px;
+}
+
+.notice b {
+	color: var(--AERcolor);
+	font-size: 24px;
+	font-weight: 100;
+}
+
+
+.maskImg {
+	grid-area: mask;
+	width: 100%;
+	max-width: 350px;
+	margin: auto;
+}
+
+.notice .addInfo {
+	grid-area: addInfo;
+	color: #898989;
+	margin: auto;
+	max-width: 350px;
+	text-align: justify
+}
+
+@media (max-width: 800px) {
+	.noticeGrid {
+		padding: 50px;
+		display: grid;
+		grid-auto-columns: 1fr 1fr;
+		grid-template-areas:
+			'h1   h1'
+			'para para'
+			'mask addInfo ';
+	}
+
+	.maskImg {
+		margin: 20px 0px 0 0;
+		max-width: 250px;
+		min-width: 175px;
+	}
+
+	.notice .addInfo {
+		padding: 20px;
+		text-align: left;
+	}
+}
+
+
+
+/*--------------------------------------------------*/
+/*                   Bookeo Widget                  */
+/*--------------------------------------------------*/
+/*copy this into the bookeo css box within settings -> style and color.*/
+.bookeocss {
+	background-color: rgb(15, 15, 15);
+	font-family: 'Roboto', sans-serif;
+	color: var(--primary-color);
+}
+
+#rtypeSelector {
+	display: none;
+}
+
+/*copy this into the bookeo css box within settings -> style and color.*/
+
+
+#bookeoContainerOuter {
+	border-radius: 0px 0px 0px 0px;
+	width: 90%;
+	margin: 0px auto;
+	background-color: white;
+}
+
+#bookeoContainerInner {
+	margin: 0 auto;
+	width: 100%;
+}
+
+/*--------------------------------------------------*/
+/*                      FAQ                         */
+/*--------------------------------------------------*/
+#FAQ {}
+
+#FAQ a {
+	color: black;
+}
+
+#FAQ b {
+	font-family: 'Boogaloo', cursive;
+	font-size: 23px;
+}
+
+#FAQ p {
+	margin: 0;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+#FAQ .faqOther {
+	padding: 15px 10% 15px 10%;
+}
+
+.question {
+	padding: 0px 10% 0 10%;
+	color: rgb(227, 29, 28);
+}
+
+.answer {
+	padding: 0px 10% 15px 10%;
+	color: rgb(0, 0, 0);
+	border-bottom: dotted 1px 5;
+}
+
+#FAQ table {
+	margin: 0px auto 0px auto;
+	border-collapse: collapse;
+	border: solid 1px black;
+	min-width: 250px;
+	text-align: center;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+#FAQ tr:nth-child(even) {
+	background-color: #e0e0e0;
+}
+
+#FAQ th {
+	margin: 0;
+	padding: 2px;
+	background-color: var(--AERcolor);
+	color: white;
+
+}
+
+#FAQ td {
+	padding: 3px;
+}
+
+#FAQ td:nth-child(odd) {
+	border-right: solid 1px white;
+}
+
+
+
+/*--------------------------------------------------*/
+/*                Corporate & Birthdays             */
+/*--------------------------------------------------*/
+#Corporate,
+#Birthdays,
+#Waiver {
+	text-align: center;
+}
+
+#Corporate p,
+#Birthdays p,
+#Waiver p {
+	padding: 10px 10%;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+#Corporate a,
+#Birthdays a,
+#Waiver a {
+	text-decoration: none;
+	color: var(--AERcolor);
+}
+
+#Corporate p,
+#Birthdays p,
+#Waiver p {
+	padding: 10px 10%;
+	font-size: 18px;
+	font-weight: bold;
+	margin: auto;
+}
+
+#Corporate img,
+#Birthdays img,
+#Waiver img {
+	display: block;
+	margin: auto;
+	width: 250px;
+}
+
+#Corporate a h2,
+#Birthdays a h2,
+#Waiver a h2 {
+	color: rgb(15, 15, 15);
+}
+
+#Corporate a h3,
+#Birthdays a h3,
+#Waiver a h3 {
+	padding-bottom: 10px;
+}
+
+.twoColumnFlex {
+	padding: 20px 10%;
+}
+
+@media only screen and (min-width: 1240px) {
+	.twoColumnFlex {
+		display: flex;
+	}
+
+	#Corporate p,
+	#Birthdays p,
+	#Waiver p {
+		text-align: justify;
+	}
+
+}
+
+
+
+
+/*--------------------------------------------------*/
+/*                  Google Maps                     */
+/*--------------------------------------------------*/
+.mapouter {
+	position: relative;
+	text-align: center;
+	height: 100%;
+	width: 90%;
+	margin: auto;
+	box-shadow: 0px -5px 0px rgb(69, 12, 12);
+}
+
+.gmap_canvas {
+	overflow: hidden;
+	background: none !important;
+	height: 100%;
+	width: 100%;
+}
+
+#googleMap {
+	margin: 0x;
+}
+
+
+
+/*--------------------------------------------------*/
+/*                  MEDIA QUERIES                   */
+/*--------------------------------------------------*/
+/* For desktop: */
+@media only screen and (min-width: 1200px) {
+
+	.containerTop,
+	.containerMiddle,
+	.containerBottom,
+	.containerSolo,
+	#bookeoContainerOuter,
+	.mapouter {
+		width: 60%;
+	}
+
+	.navLogo {
+		left: 15%;
+		width: 300px;
+	}
+
+	.navMap {
+		right: 20%;
+	}
+}
+
+/* For Realy Small mobile: */
+@media only screen and (max-width: 500px) {
+	.navLogo {
+		width: 220px;
+	}
+
+	#NavState {
+		font-size: 25px;
+	}
+
+	#NavCity a {
+		font-size: 20px;
+	}
+
+	.containerTop,
+	.containerMiddle,
+	.containerBottom,
+	.containerSolo,
+	#bookeoContainerOuter,
+	.mapouter {
+		width: 100%;
+	}
+}
+
+
+/*--------------------------------------------------*/
+/*                      GAME                        */
+/*--------------------------------------------------*/
+.gameOuter {
+	height: 100vh;
+	background-image: url(Assets/repeatableBackground.svg);
+	background-size: 125px;
+	padding-top: 70px;
+	padding-bottom: 70px;
+	width: 80%;
+	height: 100vh;
+}
+
+.gameBorder {
+	background-color: var(--AERcolor);
+	width: 90%;
+	height: calc(100vh - 200px);
+	margin: auto;
+	border-radius: 15px;
+	padding: 13px;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.8), inset 0px 4px 4px rgba(0, 0, 0, 0.8);
+}
+
+
+.gameInner {
+	background-color: white;
+	background-image: url(Assets/repeatableBackground.svg);
+	background-size: 8em;
+	width: 100%;
+	height: calc(100vh - 200px);
+	border-radius: 10px;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.8);
+
+}
+
+@media only screen and (orientation:portrait) {}

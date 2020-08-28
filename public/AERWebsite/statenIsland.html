@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Amazing Escape Room Staten Island</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://kit.fontawesome.com/b09f28c6d0.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.sound.min.js"></script>
+</head>
+
+<body>
+	<div class="vignette">
+
+		<section class="navBarContainer">
+			<a href="index.html">
+				<img alt="Amazing Escape Room Logo" class="navLogo" src="Assets/AER_Logo.png" title="AER logo">
+			</a>
+			<a href="javascript:void(0);" class="navMap" onclick="NavDropdown()">
+				<i id="MapIcon" class="fas fa-map-marked-alt fa-1g"></i>
+			</a>
+			<div id="NavDropdown">
+				<ul>
+					<li class="navItem NavState">California</li>
+					<li class="navItem NavCity"><a href="northridge.html">Northridge</a></li>
+					<li class="navItem NavState">New Jersey</li>
+					<li class="navItem NavCity"><a href="bloomfield.html">Bloomfield</a></li>
+					<li class="navItem NavCity"><a href="cherryHill.html">Cherry Hill</a></li>
+					<li class="navItem NavCity"><a href="freehold.html">Freehold</a></li>
+					<li class="navItem NavCity"><a href="greenBrook.html">Green Brook</a></li>
+					<li class="navItem NavCity"><a href="montclair.html">Montclair</a></li>
+					<li class="navItem NavCity"><a href="princeton.html">Princeton</a></li>
+					<li class="navItem NavState">New York</li>
+					<li class="navItem NavCity"><a href="statenIsland.html">Staten Island</a></li>
+					<li class="navItem NavState">Pennsylvania</li>
+					<li class="navItem NavCity"><a href="kingOfPrussia.html">King of Prussia</a></li>
+					<li class="navItem NavCity"><a href="philadelphia.html">Philadelphia</a></li>
+				</ul>
+			</div>
+		</section>
+		<div id="navBarSpacer"></div>
+
+		<section class="containerTop">
+			<div class="cityHeader">
+				<a href="https://goo.gl/maps/xpD8CrhkKN1WV6CW8" target="_blank">
+					<h3>Staten Island, NY</h3>
+					<i class="fas fa-map-marker-alt"></i> 585 N. Gannon Ave
+				</a>
+			</div>
+		</section>
+
+
+
+		<!---------------------------------The Diamond Mine------------------------------------------>
+		<section class="containerMiddle roomSlide" id="Selector">
+			<div class="aLeft"><button class="arrow" onclick="changeRoom(-1)"><i class="fas fa-angle-left"></i></button></div>
+			<div class="aRight"><button class="arrow" onclick="changeRoom(1)"><i class="fas fa-angle-right"></i></button></div>
+			<div class="roomImage DiamondMine">
+				<div class="info">
+					<span><i class="fas fa-users"></i> 2-10</span><br>
+					<span><i class="fas fa-stopwatch"></i> 60 min</span><br>
+					<span><i class="fas fa-dollar-sign"></i> 30/person</span>
+				</div>
+			</div>
+			<div class="roomTitle DiamondMineHeader">
+				<header>Diamond Mine</header>
+			</div>
+			<div class="roomDescr">
+				<p>Your journey immerses you deep below ground into an old abandon diamond mine. There you must find the lost diamond treasure and make it to the surface before your oxygen runs out. Can you make it out in under 60 minutes? Your life may just depend on it.</p>
+			</div>
+		</section>
+
+		<!---------------------------------The Bank Heist------------------------------------------>
+		<section class="containerMiddle roomSlide" id="Selector">
+			<div class="aLeft"><button class="arrow" onclick="changeRoom(-1)"><i class="fas fa-angle-left"></i></button></div>
+			<div class="aRight"><button class="arrow" onclick="changeRoom(1)"><i class="fas fa-angle-right"></i></button></div>
+			<div class="roomImage BankHeist">
+				<div class="info">
+					<span><i class="fas fa-users"></i> 2-12</span><br>
+					<span><i class="fas fa-stopwatch"></i> 60 min</span><br>
+					<span><i class="fas fa-dollar-sign"></i> 30/person</span>
+				</div>
+			</div>
+			<div class="roomTitle BankHeistHeader">
+				<header>The Bank Heist</header>
+			</div>
+			<div class="roomDescr">
+				<p>You have joined a notorious crime syndicate and your mob boss has a job for you to prove your worth, rob The Staten Island Bank. You only have 60 minutes to acquire as much cash as you can from the bank vault before the cops arrive! Can you escape? More importantly, how much loot can you get first?</p>
+			</div>
+		</section>
+
+		<!--------------------------------------Mystery In Paris-------------------------------------------->
+		<section class="containerMiddle roomSlide" id="Selector">
+			<div class="aLeft"><button class="arrow" onclick="changeRoom(-1)"><i class="fas fa-angle-left"></i></button></div>
+			<div class="aRight"><button class="arrow" onclick="changeRoom(1)"><i class="fas fa-angle-right"></i></button></div>
+			<div class="roomImage MysteryInParis">
+				<div class="info">
+					<span><i class="fas fa-users"></i> 2-10</span><br>
+					<span><i class="fas fa-stopwatch"></i> 60 min</span><br>
+					<span><i class="fas fa-dollar-sign"></i> 30/person</span>
+				</div>
+			</div>
+			<div class="roomTitle MysteryInParisHeader">
+				<header>Mystery In Paris</header>
+			</div>
+			<div class="roomDescr">
+				<p>Follow the detective back in time to Paris 1927, in this live action murder mystery. Learn about your character and retrace their steps in a game where everyone is connected, and everyone is a suspect. Keep track of the events, and follow the evidence to identify where the detective was last seen, who he was with and what the suspect had.
+
+					**This room works best with larger groups.</p>
+			</div>
+		</section>
+
+		<!--------------------------------------Mission: Space------------------------------------------------>
+		<section class="containerMiddle roomSlide" id="Selector">
+			<div class="aLeft"><button class="arrow" onclick="changeRoom(-1)"><i class="fas fa-angle-left"></i></button></div>
+			<div class="aRight"><button class="arrow" onclick="changeRoom(1)"><i class="fas fa-angle-right"></i></button></div>
+			<div class="roomImage LostInSpace">
+				<div class="info">
+					<span><i class="fas fa-users"></i> 2-10</span><br>
+					<span><i class="fas fa-stopwatch"></i> 60 min</span><br>
+					<span><i class="fas fa-dollar-sign"></i> 30/person</span>
+				</div>
+			</div>
+			<div class="roomTitle LostInSpaceHeader">
+				<header>Mission: Space</header>
+			</div>
+			<div class="roomDescr">
+				<p>Something malfunctioned and your space ship went way off course! Now barreling through space without any sort of power, you and your team must find a way to power up your ship and get back to charted territory before things start to get worse! You only have 60 minutes to get the power on and return home or you will run out of oxygen. Can you get home?
+					Please note there are flashing lights in the Mission:Space room. If you have a condition that is sensitive to lights please ask staff before booking.</p>
+			</div>
+		</section>
+
+
+		<!---------------------------------------------------------------------------->
+		<!-----------------------------------Bookeo----------------------------------->
+		<!---------------------------------------------------------------------------->
+		<!--
+        <section class="container" id="bookeoContainerOuter">
+            <div id="bookeoContainerInner">
+                <script type="text/javascript" src="https://bookeo.com/widget.js?a=41551EY39PM14F9550FDC8"></script>
+            </div>
+        </section>
+
+        <!---------------------------------------------------------------------------->
+		<!------------------------------------FAQ------------------------------------->
+		<!---------------------------------------------------------------------------->
+
+		<section class="containerMiddle" id="FAQ">
+			<header>FAQ</header>
+			<p class="faqOther">For your convenience, answers to the most common questions we receive:</p>
+
+			<p class="question"><b>Q:</b> What is an Escape Room?</p>
+			<p class="answer"><b>A:</b> An Escape Room is a live-action game starring you and your friends, as you solve puzzles, complete challenges, and decipher clues to complete the mission and escape the room!</p>
+
+			<p class="question"><b>Q:</b> How old do I have to be to play?</p>
+			<p class="answer"><b>A:</b> Anyone can play, but players under the age of 18 need an adult to sign the waiver on their behalf and players under the age of 10 must be accompanied by an adult throughout the game.</p>
+
+			<p class="question"><b>Q:</b> When can I schedule an escape game?</p>
+			<p class="answer"><b>A:</b> Games must be booked at least 30 minutes in advance or rescheduled 24 hours in advance. We suggest that you arrive at least 15 minutes prior to your booking time to fill out our wavier, and ensure you get the full hour in your room.</p>
+
+			<p class="question"><b>Q:</b> Where can I find the waiver?</p>
+			<p class="answer"><b>A:</b> Our waiver can only be accessed in person in our lobby.</p>
+
+			<p class="question"><b>Q:</b> What happens if we can’t solve any of the puzzles?</p>
+			<p class="answer"><b>A:</b> During your game, you can ask for clues from the Game Master, so don’t panic if you get stuck!</p>
+
+			<p class="question"><b>Q:</b> Do you issue refunds?</p>
+			<p class="answer"><b>A:</b> We do not issue refunds for booked games, but you may reschedule by calling in.</p>
+
+			<p class="question"><b>Q:</b> What if we don’t fill all the slots for a room?/ Will other people be in the room with us?</p>
+			<p class="answer"><b>A:</b> Our rooms are by default public. Empty spots can be booked by other customers. If you'd like a private experience with a smaller team give us a call and we may be able to accommodate you.</p>
+
+			<p class="question"><b>Q:</b> Can I take pictures inside the room?</p>
+			<p class="answer"><b>A:</b> Photographs and video recording are not allowed in the rooms. We put a lot of time and effort into the design and construction of our rooms, so we don’t want to spoil anything for players who haven’t gone yet.</p>
+
+			<p class="question"><b>Q:</b> What happens if I am late for my scheduled Escape Room experience?</p>
+			<p class="answer"><b>A:</b> Customers will not be allowed to join a game that is in progress! That means if you’re with other players and they have started you will be unable to join, so make sure to arrive 15 minutes early!</p>
+
+			<p class="question"><b>Q:</b> Where are my pictures?</p>
+			<p class="answer"><b>A:</b> We upload your pictures every Monday and Friday to our <a href="https://www.facebook.com/pg/amazingescaperoomstatenisland/photos/?ref=page_internal" target="_blank">Facebook! <i class="fab fa-facebook-square"></i></a></p>
+
+			<table>
+				<tr>
+					<th>Day</th>
+					<th>Hours</th>
+				</tr>
+				<tr>
+					<td>Sunday</td>
+					<td>10:45am - 10:00pm</td>
+				</tr>
+				<tr>
+					<td>Monday</td>
+					<td>12:00pm - 10:00pm</td>
+				</tr>
+				<tr>
+					<td>Tuesday</td>
+					<td>12:00pm - 10:00pm</td>
+				</tr>
+				<tr>
+					<td>Wednesday</td>
+					<td>12:00pm - 10:00pm</td>
+				</tr>
+				<tr>
+					<td>Thursday</td>
+					<td>12:00pm - 10:00pm</td>
+				</tr>
+				<tr>
+					<td>Friday</td>
+					<td>12:00pm - 11:15pm</td>
+				</tr>
+				<tr>
+					<td>Saturday</td>
+					<td>10:45am - 11:15pm</td>
+				</tr>
+			</table>
+
+
+			<p class="faqOther">Was your question not here? Reach out directly by calling at <a href="tel:718-303-0858">(718)303-0858.</a>
+				<p>
+		</section>
+
+		<!---------------------------------------------------------------------------->
+		<!---------------------------------Waiver------------------------------------->
+		<!---------------------------------------------------------------------------->
+
+		<section class="containerMiddle" id="Waiver">
+			<header>Waiver</header>
+			<div class="twoColumnFlex">
+				<a href="https://docs.google.com/forms/d/e/1FAIpQLSeTItCtYUvezaDkGMLNMOEgZcSAOFIHgQxxAKnKr61jw1Kkzg/viewform" target="_blank">
+					<img id="WaiverPic" src="Assets/WavierPic.png">
+				</a>
+				<div>
+					<p>Must be at least 18 years old to sign. Minors must be sign for by an adult. </p>
+					<p></p>
+					<a href="https://docs.google.com/forms/d/e/1FAIpQLSeTItCtYUvezaDkGMLNMOEgZcSAOFIHgQxxAKnKr61jw1Kkzg/viewform" target="_blank">
+						<h2>SIGN NOW!</h2>
+						<h3>Waiver</h3>
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<!---------------------------------------------------------------------------->
+		<!--------------------------------Corporate----------------------------------->
+		<!---------------------------------------------------------------------------->
+
+		<section class="containerMiddle" id="Corporate">
+			<header>Corporate Team Building</header>
+			<div class="twoColumnFlex">
+				<img id="CorporateIMG" src="Assets/CorporateIMG.png">
+				<div>
+					<p>Bring the team together! Test your team's cooperation and speed in a fun and challenging escape room.</p>
+					<p>We can comfortably accommodate up to 40 players accross all 5 of our rooms. </p>
+					<p>To get more info or set up your very own corporate event </p>
+					<a href="tel:718-303-0858">
+						<h2>CALL NOW!</h2>
+						<h3>(718)303-0858</h3>
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<!---------------------------------------------------------------------------->
+		<!-------------------------------Birthdays------------------------------------>
+		<!---------------------------------------------------------------------------->
+
+		<section class="containerMiddle" id="Birthdays">
+			<header>Let's Celebrate!</header>
+			<div class="twoColumnFlex">
+				<img id="BirthdayIMG" src="Assets/Birthdays.png">
+				<div>
+					<p>Come spend your special day conquering our amazing rooms with your closet friends.</p>
+
+					<a href="tel:718-303-0858">
+						<h2>CALL NOW!</h2>
+						<h3>(718)303-0858</h3>
+					</a>
+				</div>
+			</div>
+		</section>
+
+
+		<!---------------------------------------------------------------------------->
+		<!------------------------------Google Maps----------------------------------->
+		<!---------------------------------------------------------------------------->
+
+		<div class="containerMiddle" id="Map">
+			<header>Get Directions</header>
+		</div>
+		<section class="container" id="googleMap">
+
+			<div class="mapouter">
+				<div class="gmap_canvas">
+					<iframe width="100%" height="750" id="gmap_canvas" src="https://maps.google.com/maps?q=amazing%20escape%20room%20Staten%20Island&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+					<a href="https://www.embedgooglemap.org"></a>
+				</div>
+			</div>
+		</section>
+
+		<!---------------------------------------------------------------------------->
+		<!-----------------------------------Footer----------------------------------->
+		<!---------------------------------------------------------------------------->
+		<footer>
+			<div class="footerFlex">
+				<div class="footerInfo">
+					<span><a href="https://goo.gl/maps/AJWJe8DiBnKEo5bJ7" target="_blank"><i class="fas fa-map-marker-alt"></i> 585 N. Gannon Ave
+							(Lower Level)</a></span><br>
+					<span><a href="https://goo.gl/maps/AJWJe8DiBnKEo5bJ7" target="_blank">&emsp;Staten Island, NY 10314</a></span><br>
+					<span><a href="tel:718-303-0858"><i class="fas fa-phone-alt"></i>&nbsp;(718)303-0858</a></span><br>
+					<div class="footerSocials">
+						<span>
+							<a href="https://www.facebook.com/amazingescaperoomstatenisland/" target="_blank"><i class="fab fa-facebook-square"></i></a>
+						</span>
+					</div>
+					<br>
+				</div>
+				<div class="footerLogoContainer">
+					<a href="index.html"><img id="FooterLogo" src="https://i.ibb.co/cCYY4W7/AER-Logo.png" title="AER logo"></a>
+				</div>
+			</div>
+			<p class="copyright">&copy;&nbsp;Copyright Amazing Escape Room, LLC , 2017</p>
+		</footer>
+
+		<script src="sketch.js"></script>
+	</div>
+</body>
+
+</html>

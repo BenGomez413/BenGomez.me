@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Amazing Escape Room Cherry Hill</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://kit.fontawesome.com/b09f28c6d0.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.sound.min.js"></script>
+</head>
+
+<body>
+	<div class="vignette">
+
+		<section class="navBarContainer">
+			<a href="index.html">
+				<img alt="Amazing Escape Room Logo" class="navLogo" src="Assets/AER_Logo.png" title="AER logo">
+			</a>
+			<a href="javascript:void(0);" class="navMap" onclick="NavDropdown()">
+				<i id="MapIcon" class="fas fa-map-marked-alt fa-1g"></i>
+			</a>
+			<div id="NavDropdown">
+				<ul>
+					<li class="navItem NavState">California</li>
+					<li class="navItem NavCity"><a href="northridge.html">Northridge</a></li>
+					<li class="navItem NavState">New Jersey</li>
+					<li class="navItem NavCity"><a href="bloomfield.html">Bloomfield</a></li>
+					<li class="navItem NavCity"><a href="cherryHill.html">Cherry Hill</a></li>
+					<li class="navItem NavCity"><a href="freehold.html">Freehold</a></li>
+					<li class="navItem NavCity"><a href="greenBrook.html">Green Brook</a></li>
+					<li class="navItem NavCity"><a href="montclair.html">Montclair</a></li>
+					<li class="navItem NavCity"><a href="princeton.html">Princeton</a></li>
+					<li class="navItem NavState">New York</li>
+					<li class="navItem NavCity"><a href="statenIsland.html">Staten Island</a></li>
+					<li class="navItem NavState">Pennsylvania</li>
+					<li class="navItem NavCity"><a href="kingOfPrussia.html">King of Prussia</a></li>
+					<li class="navItem NavCity"><a href="philadelphia.html">Philadelphia</a></li>
+				</ul>
+			</div>
+		</section>
+		<div id="navBarSpacer"></div>
+
+		<section class="containerTop">
+			<div class="cityHeader">
+				<a href="https://goo.gl/maps/tE3Ya335UD8Fj4Gh6" target="_blank">
+					<h3>Cherry Hill, NJ</h3>
+					<i class="fas fa-map-marker-alt"></i> 2050 Springdale Rd
+				</a>
+			</div>
+		</section>
+
+
+
+		<!--------------------------------------Ehrlich's Manor----------------------------------------------->
+		<section class="containerMiddle roomSlide" id="Selector">
+			<div class="aLeft"><button class="arrow" onclick="changeRoom(-1)"><i class="fas fa-angle-left"></i></button></div>
+			<div class="aRight"><button class="arrow" onclick="changeRoom(1)"><i class="fas fa-angle-right"></i></button></div>
+			<div class="roomImage EhrlichsManor">
+				<div class="info">
+					<span><i class="fas fa-users"></i> 2-10</span><br>
+					<span><i class="fas fa-stopwatch"></i> 60 min</span><br>
+					<span><i class="fas fa-dollar-sign"></i> 30/person</span>
+				</div>
+			</div>
+			<div class="roomTitle EhrlichsManorHeader">
+				<header>Ehrlich's Manor</header>
+			</div>
+			<div class="roomDescr">
+				<p>You’ve made a grave mistake by entering Ehrlich’s dimly lit home. The family has been cursed by his Uncle, who brought an ancient Chinese Relic into his house, damming anyone who enters. Ehrlich can ONLY hold him back for an hour longer. We beg of you, rid this Phantom from their home!</p>
+			</div>
+		</section>
+		<!--------------------------------------The Laboratory----------------------------------------------->
+		<section class="containerMiddle roomSlide" id="Selector">
+			<div class="aLeft"><button class="arrow" onclick="changeRoom(-1)"><i class="fas fa-angle-left"></i></button></div>
+			<div class="aRight"><button class="arrow" onclick="changeRoom(1)"><i class="fas fa-angle-right"></i></button></div>
+			<div class="roomImage Laboratory">
+				<div class="info">
+					<span><i class="fas fa-users"></i> 2-10</span><br>
+					<span><i class="fas fa-stopwatch"></i> 60 min</span><br>
+					<span><i class="fas fa-dollar-sign"></i> 30/person</span>
+				</div>
+			</div>
+			<div class="roomTitle LaboratoryHeader">
+				<header>The Laboratory</header>
+			</div>
+			<div class="roomDescr">
+				<p>Help!! Someone has poisoned the Swedish Prime Minister and they only have an hour to live. There is hope though for the Prime Minister . Hidden in the Lab are all the necessary steps to make an antidote to save the Prime Minister. If you can solve the clues, puzzled and tricks and find that antidote in under an hour, you will be the envy of a nation. However, if you don’t make it out of the lab in time, you’d better get a shovel and a passport. Good Luck!! This fun theme is recommended for ages 8 to 80.</p>
+			</div>
+		</section>
+		<!--------------------------------------The Illusionist------------------------------------------------>
+		<section class="containerMiddle roomSlide" id="Selector">
+			<div class="aLeft"><button class="arrow" onclick="changeRoom(-1)"><i class="fas fa-angle-left"></i></button></div>
+			<div class="aRight"><button class="arrow" onclick="changeRoom(1)"><i class="fas fa-angle-right"></i></button></div>
+			<div class="roomImage Illusionist">
+				<div class="info">
+					<span><i class="fas fa-users"></i> 2-10</span><br>
+					<span><i class="fas fa-stopwatch"></i> 60 min</span><br>
+					<span><i class="fas fa-dollar-sign"></i> 30/person</span>
+				</div>
+			</div>
+			<div class="roomTitle IllusionistHeader">
+				<header>The Illusionist</header>
+			</div>
+			<div class="roomDescr">
+				<p>The Mysterious Malini is one of the greatest magicians of his time. You and your group of aspiring magicians were supposed to be attending The Mysterious Malini’s latest performance but you stumbled into his private parlor and discovered that he is a murderer. He has locked you in the parlor and you now have only 60 min’s until the performance ends and he returns to make you vanish forever.</p>
+			</div>
+		</section>
+
+		<!--------------------------------------Night at the Museum-------------------------------------------->
+		<section class="containerMiddle roomSlide" id="Selector">
+			<div class="aLeft"><button class="arrow" onclick="changeRoom(-1)"><i class="fas fa-angle-left"></i></button></div>
+			<div class="aRight"><button class="arrow" onclick="changeRoom(1)"><i class="fas fa-angle-right"></i></button></div>
+			<div class="roomImage NightAtTheMuseum">
+				<div class="info">
+					<span><i class="fas fa-users"></i> 2-10</span><br>
+					<span><i class="fas fa-stopwatch"></i> 60 min</span><br>
+					<span><i class="fas fa-dollar-sign"></i> 30/person</span>
+				</div>
+			</div>
+			<div class="roomTitle NightAtTheMuseumHeader">
+				<header>Night at the Museum</header>
+			</div>
+			<div class="roomDescr">
+				<p>The Star Diamond Broach is a rare and priceless item on display for a limited time at the Art Museum of Cherry Hill. You and your band of thieves have to sneak in and get the diamond before the security system comes back on and the security guard returns. This is a time sensitive mission, you only have 60 minutes to get in, get the diamond and get out. We are relying on you, please hurry and be careful.</p>
+			</div>
+		</section>
+
+		<!--------------------------------------The Pirate Ship-------------------------------------------->
+		<section class="containerMiddle roomSlide" id="Selector">
+			<div class="aLeft"><button class="arrow" onclick="changeRoom(-1)"><i class="fas fa-angle-left"></i></button></div>
+			<div class="aRight"><button class="arrow" onclick="changeRoom(1)"><i class="fas fa-angle-right"></i></button></div>
+			<div class="roomImage PirateShip">
+				<div class="info">
+					<span><i class="fas fa-users"></i> 2-10</span><br>
+					<span><i class="fas fa-stopwatch"></i> 60 min</span><br>
+					<span><i class="fas fa-dollar-sign"></i> 30/person</span>
+				</div>
+			</div>
+			<div class="roomTitle PirateShipHeader">
+				<header>The Pirate Ship</header>
+			</div>
+			<div class="roomDescr">
+				<p>Avast, Mateys! The infamous pirate captain, David S. Calabaza, thinks that you and your fellow crew members have stolen his gold and he has thrown you all in the hold. Now you must secretly find where the actual thief has hidden the gold and return it to Captain Calabaza before he has you thrown overboard into the briny deep. But be quick, Captain Calabaza will return in 60 minutes, and you could end up in Davy Jones’ Locker!</p>
+			</div>
+		</section>
+		<!-----------------Top Secret Mission-------------------->
+		<section class="containerMiddle roomSlide" id="Selector">
+			<div class="aLeft"><button class="arrow" onclick="changeRoom(-1)"><i class="fas fa-angle-left"></i></button></div>
+			<div class="aRight"><button class="arrow" onclick="changeRoom(1)"><i class="fas fa-angle-right"></i></button></div>
+			<div class="roomImage SecretMission">
+				<div class="info">
+					<span><i class="fas fa-users"></i> 2-10</span><br>
+					<span><i class="fas fa-stopwatch"></i> 60 min</span><br>
+					<span><i class="fas fa-dollar-sign"></i> 30/person</span>
+				</div>
+			</div>
+			<div class="roomTitle SecretMissionHeader">
+				<header>Top Secret Mission</header>
+			</div>
+			<div class="roomDescr">
+				<p>Our agency has received reports, both domestic and foreign, that Top Secret documents are being leaked from sensitive locations. We suspect an organized group is pulling this off. If we can identify at least one member and their methods, we can roll up the whole conspiracy. We suspect the target has infiltrated one of the Units at the Barracks. Your mission: to investigate your current location and ascertain the identity of the mole and his methods. Start by identifying the operatives in your current unit and pursue any suspicious activities.</p>
+			</div>
+		</section>
+
+		<!-----------------Axe Throwing & Escape Room Combo With Bury The Hatchet-------------------->
+		<section class="containerMiddle roomSlide" id="Selector">
+			<div class="aLeft"><button class="arrow" onclick="changeRoom(-1)"><i class="fas fa-angle-left"></i></button></div>
+			<div class="aRight"><button class="arrow" onclick="changeRoom(1)"><i class="fas fa-angle-right"></i></button></div>
+			<div class="roomImage AxeCombo">
+				<div class="info">
+					<span><i class="fas fa-users"></i> 2-10</span><br>
+					<span><i class="fas fa-stopwatch"></i> 60 min</span><br>
+					<span><i class="fas fa-dollar-sign"></i> 50/person</span>
+				</div>
+			</div>
+			<div class="roomTitle AxeComboHeader">
+				<header>Axe Throwing & Escape Room Combo</header>
+			</div>
+			<div class="roomDescr">
+				<p>Enjoy 1 hour in an Amazing Escape Room and 1 hour of Axe Throwing at Bury The Hatchet! Come join us for our limited time experience! Enjoy 1 hour at one of the highest rated Escape Room experiences in America. Then enjoy 1 hour of Axe Throwing at Bury The Hatchet.</p>
+			</div>
+		</section>
+
+
+		<!---------------------------------------------------------------------------->
+		<!-----------------------------------Bookeo----------------------------------->
+		<!---------------------------------------------------------------------------->
+		<!--
+        <section class="container" id="bookeoContainerOuter">
+            <div id="bookeoContainerInner">
+                <script type="text/javascript" src="https://bookeo.com/widget.js?a=41551EY39PM14F9550FDC8"></script>
+            </div>
+        </section>
+
+        <!---------------------------------------------------------------------------->
+		<!------------------------------------FAQ------------------------------------->
+		<!---------------------------------------------------------------------------->
+
+		<section class="containerMiddle" id="FAQ">
+			<header>FAQ</header>
+			<p class="faqOther">For your convenience, answers to the most common questions we receive:</p>
+
+			<p class="question"><b>Q:</b> What is an Escape Room?</p>
+			<p class="answer"><b>A:</b> An Escape Room is a live-action game starring you and your friends, as you solve puzzles, complete challenges, and decipher clues to complete the mission and escape the room!</p>
+
+			<p class="question"><b>Q:</b> How old do I have to be to play?</p>
+			<p class="answer"><b>A:</b> Anyone can play, but players under the age of 18 need an adult to sign the waiver on their behalf and players under the age of 10 must be accompanied by an adult throughout the game.</p>
+
+			<p class="question"><b>Q:</b> When can I schedule an escape game?</p>
+			<p class="answer"><b>A:</b> Games must be booked at least 30 minutes in advance or rescheduled 24 hours in advance. We suggest that you arrive at least 15 minutes prior to your booking time to fill out our wavier, and ensure you get the full hour in your room.</p>
+
+			<p class="question"><b>Q:</b> Where can I find the waiver?</p>
+			<p class="answer"><b>A:</b> Our waiver can only be accessed in person in our lobby.</p>
+
+			<p class="question"><b>Q:</b> What happens if we can’t solve any of the puzzles?</p>
+			<p class="answer"><b>A:</b> During your game, you can ask for clues from the Game Master, so don’t panic if you get stuck!</p>
+
+			<p class="question"><b>Q:</b> Do you issue refunds?</p>
+			<p class="answer"><b>A:</b> We do not issue refunds for booked games, but you may reschedule by calling in.</p>
+
+			<p class="question"><b>Q:</b> What if we don’t fill all the slots for a room?/ Will other people be in the room with us?</p>
+			<p class="answer"><b>A:</b> Our rooms are by default public. Empty spots can be booked by other customers. If you'd like a private experience with a smaller team give us a call and we may be able to accommodate you.</p>
+
+			<p class="question"><b>Q:</b> Can I take pictures inside the room?</p>
+			<p class="answer"><b>A:</b> Photographs and video recording are not allowed in the rooms. We put a lot of time and effort into the design and construction of our rooms, so we don’t want to spoil anything for players who haven’t gone yet.</p>
+
+			<p class="question"><b>Q:</b> What happens if I am late for my scheduled Escape Room experience?</p>
+			<p class="answer"><b>A:</b> Customers will not be allowed to join a game that is in progress! That means if you’re with other players and they have started you will be unable to join, so make sure to arrive 15 minutes early!</p>
+
+			<p class="question"><b>Q:</b> Where are my pictures?</p>
+			<p class="answer"><b>A:</b> We upload your pictures every Monday and Friday to our <a href="https://www.facebook.com/pg/AmazingEscapeRoomCherryHill/photos/?ref=page_internal" target="_blank">Facebook! <i class="fab fa-facebook-square"></i></a></p>
+
+			<table>
+				<tr>
+					<th>Day</th>
+					<th>Hours</th>
+				</tr>
+				<tr>
+					<td>Sunday</td>
+					<td>10:45am - 10:00pm</td>
+				</tr>
+				<tr>
+					<td>Monday</td>
+					<td>12:00pm - 10:00pm</td>
+				</tr>
+				<tr>
+					<td>Tuesday</td>
+					<td>12:00pm - 10:00pm</td>
+				</tr>
+				<tr>
+					<td>Wednesday</td>
+					<td>12:00pm - 10:00pm</td>
+				</tr>
+				<tr>
+					<td>Thursday</td>
+					<td>12:00pm - 10:00pm</td>
+				</tr>
+				<tr>
+					<td>Friday</td>
+					<td>12:00pm - 11:15pm</td>
+				</tr>
+				<tr>
+					<td>Saturday</td>
+					<td>10:45am - 11:15pm</td>
+				</tr>
+			</table>
+
+
+			<p class="faqOther">Was your question not here? Reach out directly by calling at <a href="tel:856-324-6417">(856)324-6417.</a>
+				<p>
+		</section>
+
+		<!---------------------------------------------------------------------------->
+		<!---------------------------------Waiver------------------------------------->
+		<!---------------------------------------------------------------------------->
+
+		<section class="containerMiddle" id="Waiver">
+			<header>Waiver</header>
+			<div class="twoColumnFlex">
+				<a href="https://docs.google.com/forms/d/e/1FAIpQLSeTItCtYUvezaDkGMLNMOEgZcSAOFIHgQxxAKnKr61jw1Kkzg/viewform" target="_blank">
+					<img id="WaiverPic" src="Assets/WavierPic.png">
+				</a>
+				<div>
+					<p>Must be at least 18 years old to sign. Minors must be sign for by an adult. </p>
+					<p></p>
+					<a href="https://docs.google.com/forms/d/e/1FAIpQLSeTItCtYUvezaDkGMLNMOEgZcSAOFIHgQxxAKnKr61jw1Kkzg/viewform" target="_blank">
+						<h2>SIGN NOW!</h2>
+						<h3>Waiver</h3>
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<!---------------------------------------------------------------------------->
+		<!--------------------------------Corporate----------------------------------->
+		<!---------------------------------------------------------------------------->
+
+		<section class="containerMiddle" id="Corporate">
+			<header>Corporate Team Building</header>
+			<div class="twoColumnFlex">
+				<img id="CorporateIMG" src="Assets/CorporateIMG.png">
+				<div>
+					<p>Bring the team together! Test your team's cooperation and speed in a fun and challenging escape room.</p>
+					<p>We can comfortably accommodate up to 40 players accross all 5 of our rooms. </p>
+					<p>To get more info or set up your very own corporate event </p>
+					<a href="tel:856-324-6417">
+						<h2>CALL NOW!</h2>
+						<h3>(856)324-6417</h3>
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<!---------------------------------------------------------------------------->
+		<!-------------------------------Birthdays------------------------------------>
+		<!---------------------------------------------------------------------------->
+
+		<section class="containerMiddle" id="Birthdays">
+			<header>Let's Celebrate!</header>
+			<div class="twoColumnFlex">
+				<img id="BirthdayIMG" src="Assets/Birthdays.png">
+				<div>
+					<p>Come spend your special day conquering our amazing rooms with your closet friends.</p>
+
+					<a href="tel:856-324-6417">
+						<h2>CALL NOW!</h2>
+						<h3>(856)324-6417</h3>
+					</a>
+				</div>
+			</div>
+		</section>
+
+
+		<!---------------------------------------------------------------------------->
+		<!------------------------------Google Maps----------------------------------->
+		<!---------------------------------------------------------------------------->
+
+		<div class="containerMiddle" id="Map">
+			<header>Get Directions</header>
+		</div>
+		<section class="container" id="googleMap">
+
+			<div class="mapouter">
+				<div class="gmap_canvas">
+					<iframe width="100%" height="750" id="gmap_canvas" src="https://maps.google.com/maps?q=amazing%20escape%20room%20cherry%20hill&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+					<a href="https://www.embedgooglemap.org"></a>
+				</div>
+			</div>
+		</section>
+
+		<!---------------------------------------------------------------------------->
+		<!----------------------------------Footer------------------------------------>
+		<!---------------------------------------------------------------------------->
+		<footer>
+			<div class="footerFlex">
+				<div class="footerInfo">
+					<span><a href="https://goo.gl/maps/tE3Ya335UD8Fj4Gh6" target="_blank"><i class="fas fa-map-marker-alt"></i> 2050 Springdale Rd Suite 200</a></span><br>
+					<span><a href="https://goo.gl/maps/tE3Ya335UD8Fj4Gh6" target="_blank">&emsp;Cherry Hill, NJ 08003</a></span><br>
+					<span><a href="tel:856-324-6417"><i class="fas fa-phone-alt"></i>&nbsp;(856)324-6417</a></span><br>
+					<div class="footerSocials">
+						<span>
+							<a href="https://www.facebook.com/AmazingEscapeRoomCherryHill/" target="_blank"><i class="fab fa-facebook-square"></i></a>
+							<a href="https://www.yelp.com/biz/amazing-escape-room-cherry-hill" target="_blank" id="twitter"><i class="fab fa-yelp"></i></a>
+							<a href="https://twitter.com/aercherryhill" target="_blank" id="yelp"><i class="fab fa-twitter"></i></a>
+						</span>
+					</div>
+					<br>
+				</div>
+				<div class="footerLogoContainer">
+					<a href="index.html"><img id="FooterLogo" src="https://i.ibb.co/cCYY4W7/AER-Logo.png" title="AER logo"></a>
+				</div>
+			</div>
+			<p class="copyright">&copy;&nbsp;Copyright Amazing Escape Room, LLC , 2017</p>
+		</footer>
+
+		<script src="sketch.js"></script>
+	</div>
+</body></html>

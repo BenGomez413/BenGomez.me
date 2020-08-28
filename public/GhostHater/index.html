@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ghost Hater</title>
+  <script src="https://kit.fontawesome.com/b09f28c6d0.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all">
+  <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-shims.min.css" media="all">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="nav">
+    <div>
+      <h1>GHOST HATER</h1>
+    </div>
+
+    <button class=" btn add-ghost-post" onclick="newPost()">
+      <h2>New Ghost Post</h2>
+      <svg viewBox="0 0 130 113" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd"
+          d="M87.0338 0C63.8378 0 45.0338 18.804 45.0338 42V99.5C44.8671 101.333 45.2338 105 48.0338 105C49.8545 105 52.3517 103.106 54.4697 101.499C56.4232 100.017 58.054 98.7803 58.5338 99.5C59.3671 99.1667 62.1338 100 66.5338 106C70.9338 112 72.3671 112.5 72.5338 112C73.5338 112.167 76.3338 111.2 79.5338 106C82.7338 100.8 85.8671 99.5 87.0338 99.5C88.2005 99.5 91.3338 100.8 94.5338 106C97.7338 111.2 100.534 112.167 101.534 112C101.7 112.5 103.134 112 107.534 106C111.934 100 114.7 99.1667 115.534 99.5C116.014 98.7803 117.644 100.017 119.598 101.499C121.716 103.106 124.213 105 126.034 105C128.834 105 129.2 101.333 129.034 99.5V42C129.034 18.804 110.23 0 87.0338 0ZM54.3553 36.3648C52.9203 37.8108 52.0338 39.8019 52.0338 42C52.0338 46.4183 55.6155 50 60.0338 50C64.4521 50 68.0338 46.4183 68.0338 42C68.0338 41.0142 67.8555 40.07 67.5294 39.198L54.3553 36.3648ZM71.0338 71V50.6842C71.0338 46.4403 78.1972 43 87.0338 43C95.8704 43 103.034 46.4403 103.034 50.6842V71H71.0338ZM106.034 42C106.034 41.1013 106.182 40.2372 106.455 39.4309L119.884 36.543C121.218 37.9723 122.034 39.8908 122.034 42C122.034 46.4183 118.452 50 114.034 50C109.616 50 106.034 46.4183 106.034 42Z" />
+        <path
+          d="M22 0H23C26.866 0 30 3.13401 30 7V15H38C41.866 15 45 18.134 45 22V23C45 26.866 41.866 30 38 30H30V38C30 41.866 26.866 45 23 45H22C18.134 45 15 41.866 15 38V30H7C3.13401 30 0 26.866 0 23V22C0 18.134 3.13401 15 7 15H15V7C15 3.13401 18.134 0 22 0Z" />
+      </svg>
+    </button>
+
+  </div>
+
+  <div class="new-post-container" id="new-post-container">
+    <form class="new-post-form" action=""  onsubmit="return false">
+      <h2>Name of Ghost:</h2>
+      <input id="name-input" type="text">
+      <h2>Image Address:</h2>
+      <input id="image-address-input" type="text">
+      <h2>Comment:</h2>
+      <textarea name="" id="comment-textarea" cols="30" rows="10"></textarea>
+      <br>
+      <button class="btn" onclick="storeLocally()">Submit</button>
+    </form>
+  </div>
+
+
+
+  <div class="container">
+
+    
+
+    <div class="post-container" id="post-container"></div>
+
+
+
+
+
+  </div>
+
+  
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Amazing Escape Room Home</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://kit.fontawesome.com/b09f28c6d0.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.sound.min.js"></script>
+</head>
+
+<body>
+	<div class="vignette">
+
+		<section class="navBarContainer">
+			<a href="index.html">
+				<img alt="Amazing Escape Room Logo" class="navLogo" src="Assets/AER_Logo.png" title="AER logo">
+			</a>
+			<a href="javascript:void(0);" class="navMap" onclick="NavDropdown()">
+				<i id="MapIcon" class="fas fa-map-marked-alt fa-1g"></i>
+			</a>
+			<div id="NavDropdown">
+				<ul>
+					<li class="navItem NavState">California</li>
+					<li class="navItem NavCity"><a href="northridge.html">Northridge</a></li>
+					<li class="navItem NavState">New Jersey</li>
+					<li class="navItem NavCity"><a href="bloomfield.html">Bloomfield</a></li>
+					<li class="navItem NavCity"><a href="cherryHill.html">Cherry Hill</a></li>
+					<li class="navItem NavCity"><a href="freehold.html">Freehold</a></li>
+					<li class="navItem NavCity"><a href="greenBrook.html">Green Brook</a></li>
+					<li class="navItem NavCity"><a href="montclair.html">Montclair</a></li>
+					<li class="navItem NavCity"><a href="princeton.html">Princeton</a></li>
+					<li class="navItem NavState">New York</li>
+					<li class="navItem NavCity"><a href="statenIsland.html">Staten Island</a></li>
+					<li class="navItem NavState">Pennsylvania</li>
+					<li class="navItem NavCity"><a href="kingOfPrussia.html">King of Prussia</a></li>
+					<li class="navItem NavCity"><a href="philadelphia.html">Philadelphia</a></li>
+				</ul>
+			</div>
+		</section>
+		<div id="navBarSpacer"></div>
+
+		<section class="containerMiddle" id="topBanner">
+			<h1>DO YOU HAVE WHAT IT TAKES...</h1>
+			<header>TO ESCAPE?</header>
+		</section>
+
+		<section class="containerMiddle" id="locations">
+			<header>Locations</header>
+			<div class="TwoColumn" id="LocationSelectionMap">
+				<div>
+					<div class="State" id="California">
+						<h1>California</h1>
+						<a href="northridge.html">
+							<h3 class="city">Northridge</h3>
+						</a>
+					</div>
+					<div class="State" id="NewYork">
+						<h1>New York</h1>
+						<a href="statenIsland.html">
+							<h3 class="city">Staten Island</h3>
+						</a>
+					</div>
+					<div class="State" id="Pennsylvania">
+						<h1>Pennsylvania</h1>
+						<a href="philadelphia.html">
+							<h3 class="city">Philadelphia</h3>
+						</a>
+						<a href="kingOfPrussia.html">
+							<h3 class="city">King of Prussia</h3>
+						</a>
+					</div>
+				</div>
+				<div class="State" id="NewJersey">
+					<h1>New Jersey</h1>
+					<a href="bloomfield.html">
+						<h3 class="city">Bloomfield</h3>
+					</a>
+					<a href="greenBrook.html">
+						<h3 class="city">Green Brook</h3>
+					</a>
+					<a href="cherryHill.html">
+						<h3 class="city">Cherry Hill</h3>
+					</a>
+					<a href="freehold.html">
+						<h3 class="city">Freehold</h3>
+					</a>
+					<a href="montclair.html">
+						<h3 class="city">Montclair</h3>
+					</a>
+					<a href="princeton.html">
+						<h3 class="city">Princeton</h3>
+					</a>
+
+				</div>
+			</div>
+		</section>
+
+		<section class="containerMiddle" id="About">
+			<header>About</header>
+			<p>Escape Rooms are a fantastic hobby grabbing attention worldwide. At Amazing Escape Room we’re all about bringing a family together, work families included! We are a national retail entertainment chain with locations specializing in bringing you fun. We have rooms all across the United States waiting to amaze you. We’ll challenge your minds and abilities to work together with others in a high-stress and interactive, team-building environment. We guarantee no matter where you play or which room you choose you’ll leave with good memories from an amazing time at Amazing Escape Room! </p>
+
+			<h1>FIND YOUR LOCAL AMAZING ESCAPE ROOM ABOVE!</h1>
+		</section>
+
+		<section class="containerMiddle" id="CorpBirthdays">
+			<header>CORPORATE EVENTS & BIRTHDAYS</header>
+			<img alt="CorpImg" src="Assets/CorporateIMG.png">
+			<img alt="BirthdayImg" src="Assets/Birthdays.png">
+			<h1>VISIT YOUR LOCATIONS PAGE FOR MORE DETAILS</h1>
+		</section>
+
+		<section class="containerMiddle" id="More">
+			<header>More</header>
+			<a id="BTHlogo" target="_blank" href="https://burythehatchet.com/">
+				<img alt="BuryTheHatchetLogo" src="Assets/Bury%20the%20Hatchet%20Logo.png">
+			</a>
+		</section>
+
+		<footer>
+			<div class="footerLogoContainer">
+				<a href="index.html"><img alt="AERlogo" class="footerLogoHome" src="Assets/AER_Logo.png" title="AER logo"></a>
+			</div>
+			<p class="copyright">&copy;&nbsp;Copyright Amazing Escape Room, LLC , 2017</p>
+		</footer>
+		<script src="sketch.js"></script>
+	</div>
+</body>
+
+</html>
