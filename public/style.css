@@ -107,8 +107,32 @@ section {
 	text-align: center;
 }
 
-.cartridge:hover {
+.cartridge img:hover {
 	transform: translateY(-1em);
+}
+
+.github{
+	width: 100%;
+	color: #e2e0d9;
+	font-size: 20px;
+	display: block;
+}
+
+.github i{
+	background-color: #24292e;
+	color: #e2e0d9;
+	border-radius: 50%;
+	border: #e2e0d9 3px solid;
+}
+
+.github:hover i{
+	cursor: pointer;
+	border: #BA6946 3px solid;
+}
+
+.github span{
+	display: inline-block;
+	margin-left: 3px;
 }
 
 
@@ -121,31 +145,23 @@ section {
 	box-shadow: 4px 0px 5px rgba(0, 0, 0, 0.25);
 }
 
-.card header {
-	text-align: center;
-	padding: 10px;
-}
-
-
 .AERwebsite {
 	background-image: url(Assets/AERwebsite.jpg);
 	border-color: #BA6946;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
-.Waiver {
-	background-image: url(Assets/waiver.jpg);
-	border-color: #BA6946;
+.AERwebsite h1{
+	background-color: #24292ee5;
+	text-align: center;
+	color: white;
+	margin: 0px;
+	border-radius: 10px 10px 0 0;
+	padding: 15px;
 }
 
-.rock-paper-scissors {
-	background-image: url(Assets/Rock\ Paper\ Scissors.jpg);
-	border-color: #BA6946;
-}
-
-.ghost-hater {
-	background-image: url(Assets/GhostHater.jpg);
-	border-color: #BA6946;
-}
 
 
 .vignette {
