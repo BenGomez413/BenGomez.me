@@ -2,13 +2,12 @@ let r = 0;
 let g = 0;
 let b = 0;
 
-let arduinoJSON = null;
-// { 
-//   "device": "MKR1010",
-//   "red": "50",
-//   "green": "100",
-//   "blue": "255"
-// }
+let arduinoJSON = { 
+  "device": "MKR1010",
+  "red": "50",
+  "green": "100",
+  "blue": "255"
+}
 
 
 let slidersOutputs = [
@@ -91,8 +90,6 @@ function updateJSON(updatedJSON) {
   };
 	fetch('/updateJSON', options)
 	.then(async function (res) {
-		const incommingData = await res.json();
-		console.log(incommingData);
 		updateTable();
 	})
 	.catch(function (err) {
