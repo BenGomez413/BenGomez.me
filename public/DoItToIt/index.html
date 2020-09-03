@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DO IT TO IT</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="displayTasks()">
+  <div class="input-overlay">
+    <form class="drop-shadow-big" id="new-task-form">
+      <h1>New Task!</h1>
+      <textarea name="" id="new-task-text" cols="30" rows="10"></textarea>
+      <p>Due Date:</p>
+      <input class="calendar" id="new-task-date" type="date">
+      <input class="submit-btn" type="submit" value="Submit">
+    </form>
+  </div>
+
+  <div class="grid-container">
+
+    <div class="sidebar drop-shadow-big">
+      <div class="logo-container drop-shadow-small">
+        <img class="logo" src="Assets/Logo Full.png" alt="DO IT TO IT Logo">
+      </div>
+      <form class="sort-tasks-form" id="sort-tasks-form">
+        <input class="calendar" id="sort-task-date" type="date" id="filter-date">
+        <input class="sort-btn" type="submit" value="Sort">
+      </form>
+
+      <div class="tasks-completed">Task Completed: 25</div>
+    </div>
+
+    <div class="header drop-shadow-big">
+      <span class="add-task-btn" onclick="showInputOverlay()">+</span>
+      <div>
+        <p id="focused-day-header">Monday,</p>
+      </div>
+      <div class="today">
+        <p id="today-header">Today is</p>
+      </div>
+    </div>
+
+    <div class="main drop-shadow-big display-tasks">
+
+
+
+    </div>
+
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

@@ -199,3 +199,19 @@ td{
 td:nth-child(2n){
   background-color: #a19c8b;
 }
+
+
+.test-button{
+  background-color: #BA6946;
+  color: #D9D5C8;
+  width: 160px;
+  margin: 20px;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+}
+
+.test-button:hover{
+  cursor: pointer;
+  background-color:#c57958;
+}

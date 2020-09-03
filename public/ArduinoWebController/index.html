@@ -17,29 +17,30 @@
 
 	<div class="gridContainer">
 
-		<form class="container rgb" action="includes/update.rgb.php" method="post">
+		<form class="container rgb">
 			<h1>RGB</h1>
 
 			<div class="color red">
-				<label>RED</label> 
+				<label>RED</label>
 				<div class="value" id="redValue"></div>
 				<input class="slider" name="red" type="range" min="0" max="255" value="0" id="redRange">
 			</div>
 
 			<div class="color green">
-				<label>GREEN</label> 
+				<label>GREEN</label>
 				<div type="text" class="value" id="greenValue"></div>
 				<input class="slider" name="green" type="range" min="0" max="255" value="0" id="greenRange">
 			</div>
 
 			<div class="color blue">
-				<label >BLUE</label> 
+				<label>BLUE</label>
 				<div class="value" id="blueValue"></div>
 				<input class="slider" name="blue" type="range" min="0" max="255" value="0" id="blueRange">
 			</div>
 
-			<input class="submit" name="rgbSubmit" type="submit" value="SEND">
+			<input class="submit" name="rgbSubmit" type="submit" value="SEND" id="rgbBTN">
 		</form>
+
 
 		<div class="container rgbPreviewContainer">
 			<div class="rgbPreview" id="rgbPreview"></div>
@@ -47,7 +48,7 @@
 
 		<div class="container switchBoard">
 			<h1>SWITCH BOARD</h1><br>
-			<form action="/action_page.php">
+			<form>
 
 				<div class="toggle">
 					<input type="checkbox" id="switch1" name="switch1" value="switch1">
@@ -70,7 +71,7 @@
 				</div>
 
 				<br>
-				<input type="submit" value="SEND">
+				<input type="submit" value="SEND" id="switch-button">
 			</form>
 
 		</div>
@@ -78,25 +79,32 @@
 
 	<section class="databaseTable">
 		<div class="head">
-		<div><h1>DATABASE TABLE</h1></div>
+			<div>
+				<h1>DATABASE TABLE</h1>
+			</div>
 			<img src="Assets/arduino-logo-black-and-white.png">
 		</div>
 		<table>
 			<tr>
-				<th>ID</th>
-				<th>TIME</th>
+				<th>NAME</th>
 				<th>RED</th>
 				<th>GREEN</th>
 				<th>BLUE</th>
-				<th>PIN0</th>
 			</tr>
 
-
-			<?php include_once 'includes/database.php';?>
-
-
+			<tr>
+				<td id="table-name"></td>
+				<td id="table-red"></td>
+				<td id="table-green"></td>
+				<td id="table-blue"></td>
+			</tr>
 		</table>
+
 	</section>
+
+	<div class="test-button" id="test-button">TEST BUTTON</div>
+
+
 	<script src="sketch.js"></script>
 </body>
 
