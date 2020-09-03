@@ -1,7 +1,3 @@
-let r = 0;
-let g = 0;
-let b = 0;
-
 let arduinoJSON = { 
   "device": "MKR1010",
   "red": "50",
@@ -9,6 +5,9 @@ let arduinoJSON = {
   "blue": "255"
 }
 
+let r = arduinoJSON.red;
+let g = arduinoJSON.green;
+let b = arduinoJSON.blue;
 
 let slidersOutputs = [
 	[document.getElementById("redRange"), document.getElementById("redValue")],
@@ -41,8 +40,6 @@ for (let i = 0; i < slidersOutputs.length; i++) {
 //SETUP
 getJSON();
 
-
-
 document.getElementById('rgb-button').addEventListener('click', setRGB);
 function setRGB() {
 	arduinoJSON.red = document.getElementById("redRange").value;
@@ -50,16 +47,16 @@ function setRGB() {
 	arduinoJSON.blue = document.getElementById("blueRange").value;
 	updateJSON(arduinoJSON);
 	updateTable();
-	console.log(`rgb(${arduinoJSON.red}, ${arduinoJSON.green}, ${arduinoJSON.blue})`);
+	//console.log(`rgb(${arduinoJSON.red}, ${arduinoJSON.green}, ${arduinoJSON.blue})`);
 }
 
 function getJSON() {
 	fetch('/getJSON') // Call the fetch function passing the url of the API as a parameter
 		.then(async function (res) {
-			const incommingData = await res.json();
-			//console.log(incommingData);
+			let incommingData = await res.json();
+			console.log(incommingData);
 			arduinoJSON = incommingData;
-			console.log(`rgb(${arduinoJSON.red}, ${arduinoJSON.green}, ${arduinoJSON.blue})`);
+			//console.log(`rgb(${arduinoJSON.red}, ${arduinoJSON.green}, ${arduinoJSON.blue})`);
 			updateTable();
 		})
 		.catch(function (err) {
@@ -91,6 +88,7 @@ function updateJSON(updatedJSON) {
 	fetch('/updateJSON', options)
 	.then(async function (res) {
 		updateTable();
+		getJSON();
 	})
 	.catch(function (err) {
 		console.log(err);

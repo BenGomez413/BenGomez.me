@@ -22,12 +22,13 @@ app.use(express.json({
 }));
 app.post('/updateJSON', (req, res) => {
   console.log(' *UPDATE requested');
-  console.log(req.body);
+  //console.log(req.body);
   let requestString = JSON.stringify(req.body, null, 2);
+  console.log(requestString);
   fs.writeFileSync('public/ArduinoWebController/arduino.json', requestString, function (err) {
     if (err) throw err;
   });
-  console.log('  Updated!\n');
+  console.log('  UPDATED!\n');
   res.end();
 });
 
