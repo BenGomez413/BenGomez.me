@@ -1,7 +1,15 @@
-let name = "";
-let r;
-let g;
-let b;
+let r = 0;
+let g = 0;
+let b = 0;
+
+let arduinoJSON = null;
+// { 
+//   "device": "MKR1010",
+//   "red": "50",
+//   "green": "100",
+//   "blue": "255"
+// }
+
 
 let slidersOutputs = [
 	[document.getElementById("redRange"), document.getElementById("redValue")],
@@ -27,74 +35,68 @@ for (let i = 0; i < slidersOutputs.length; i++) {
 			b = this.value;
 		}
 
-		setRGBpreview();
+		document.getElementById("rgbPreview").style.backgroundColor = `rgb(${r},${g},${b})`;
 	}
 }
 
-getRGB();
+//SETUP
+getJSON();
 
-function setRGBpreview() {
-	document.getElementById("rgbPreview").style.backgroundColor = `rgb(${r},${g},${b})`;
+
+
+document.getElementById('rgb-button').addEventListener('click', setRGB);
+function setRGB() {
+	arduinoJSON.red = document.getElementById("redRange").value;
+	arduinoJSON.green = document.getElementById("greenRange").value;
+	arduinoJSON.blue = document.getElementById("blueRange").value;
+	updateJSON(arduinoJSON);
+	updateTable();
+	console.log(`rgb(${arduinoJSON.red}, ${arduinoJSON.green}, ${arduinoJSON.blue})`);
 }
 
-document.getElementById('switch-button').addEventListener('click', getRGB);
-
-function getRGB(e) {
-	if (e) {
-		e.preventDefault();
-	}
-
-	fetch('/getRGB') // Call the fetch function passing the url of the API as a parameter
+function getJSON() {
+	fetch('/getJSON') // Call the fetch function passing the url of the API as a parameter
 		.then(async function (res) {
 			const incommingData = await res.json();
 			//console.log(incommingData);
-
-			name = incommingData.name;
-			r = incommingData.red;
-			g = incommingData.green;
-			b = incommingData.blue;
-
-			console.log(`rgb(${r}, ${g}, ${b})`);
-			setRGBpreview();
+			arduinoJSON = incommingData;
+			console.log(`rgb(${arduinoJSON.red}, ${arduinoJSON.green}, ${arduinoJSON.blue})`);
 			updateTable();
 		})
-		.catch(function () {
-			console.log('Error');
+		.catch(function (err) {
+			console.log(err);
 		});
 }
 
 function updateTable() {
-	const tableName = document.getElementById('table-name');
+	const tableDevice = document.getElementById('table-device');
 	const tableRed = document.getElementById('table-red');
 	const tableGreen = document.getElementById('table-green');
 	const tableBlue = document.getElementById('table-blue');
 
-	tableName.innerHTML = name;
-	tableRed.innerHTML = r;
-	tableGreen.innerHTML = g;
-	tableBlue.innerHTML = b;
+	tableDevice.innerHTML = arduinoJSON.device;
+	tableRed.innerHTML = arduinoJSON.red;
+	tableGreen.innerHTML = arduinoJSON.green;
+	tableBlue.innerHTML = arduinoJSON.blue;
 }
 
 
-document.getElementById('test-button').addEventListener('click', updateJSON);
-const data = { username: 'example' };
-
-async function updateJSON() {
-	fetch('/updateJSON', {
-			method: 'POST', // or 'PUT'
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(data),
-		})
-		.then(response => response.json())
-		.then(data => {
-			console.log('Success:', data);
-		})
-		.catch((error) => {
-			console.error('Error:', error);
-		});
+function updateJSON(updatedJSON) {
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(updatedJSON)
+  };
+	fetch('/updateJSON', options)
+	.then(async function (res) {
+		const incommingData = await res.json();
+		console.log(incommingData);
+		updateTable();
+	})
+	.catch(function (err) {
+		console.log(err);
+	});
 }
-
-
 

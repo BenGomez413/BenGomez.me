@@ -17,7 +17,7 @@
 
 	<div class="gridContainer">
 
-		<form class="container rgb">
+		<div class="container rgb">
 			<h1>RGB</h1>
 
 			<div class="color red">
@@ -38,8 +38,8 @@
 				<input class="slider" name="blue" type="range" min="0" max="255" value="0" id="blueRange">
 			</div>
 
-			<input class="submit" name="rgbSubmit" type="submit" value="SEND" id="rgbBTN">
-		</form>
+			<input class="submit" name="rgbSubmit" type="submit" value="SEND" id="rgb-button">
+		</div>
 
 
 		<div class="container rgbPreviewContainer">
@@ -48,7 +48,8 @@
 
 		<div class="container switchBoard">
 			<h1>SWITCH BOARD</h1><br>
-			<form>
+
+			<div>
 
 				<div class="toggle">
 					<input type="checkbox" id="switch1" name="switch1" value="switch1">
@@ -72,7 +73,7 @@
 
 				<br>
 				<input type="submit" value="SEND" id="switch-button">
-			</form>
+			</div>
 
 		</div>
 	</div>
@@ -86,14 +87,14 @@
 		</div>
 		<table>
 			<tr>
-				<th>NAME</th>
+				<th>Device</th>
 				<th>RED</th>
 				<th>GREEN</th>
 				<th>BLUE</th>
 			</tr>
 
 			<tr>
-				<td id="table-name"></td>
+				<td id="table-device"></td>
 				<td id="table-red"></td>
 				<td id="table-green"></td>
 				<td id="table-blue"></td>
@@ -101,8 +102,6 @@
 		</table>
 
 	</section>
-
-	<div class="test-button" id="test-button">TEST BUTTON</div>
 
 
 	<script src="sketch.js"></script>

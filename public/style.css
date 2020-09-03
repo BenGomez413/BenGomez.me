@@ -73,6 +73,10 @@ nav li:hover{
 	padding: 30px 0 30px 10px;
 }
 
+.project{
+	margin-bottom: 20px;
+}
+
 .cartridgeDisplay {
 	display: grid;
 	grid-gap: 2em 1em;
@@ -115,16 +119,6 @@ nav li:hover{
 .github span{
 	display: inline-block;
 	margin-left: 3px;
-}
-
-
-.card {
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
-	height: 325px;
-	border-radius: 30px;
-	box-shadow: 4px 0px 5px rgba(0, 0, 0, 0.25);
 }
 
 

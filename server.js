@@ -6,14 +6,9 @@ const path = require('path');
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-
-
-
-
 const fs = require('fs');
 
-app.get("/getRGB", function (req, res) {
+app.get("/getJSON", function (req, res) {
   let rawdata = fs.readFileSync('public/ArduinoWebController/arduino.json');
   let info = JSON.parse(rawdata);
   //console.log(info);  
@@ -21,16 +16,20 @@ app.get("/getRGB", function (req, res) {
 });
 
 
-
-app.put("/updateJSON", function (req, res) {
-  console.log('req:' + req);
-  
-  // fs.writeFileSync('public/ArduinoWebController/arduino.json', req);
-  // console.log("File written successfully\n");
-  // console.log("The written has the following contents:");
-  // console.log(fs.readFileSync("programming.txt", "utf8"));
-})
-
+//Save updated JSON
+app.use(express.json({
+  limit: '1mb'
+}));
+app.post('/updateJSON', (req, res) => {
+  console.log(' *UPDATE requested');
+  console.log(req.body);
+  let requestString = JSON.stringify(req.body, null, 2);
+  fs.writeFileSync('public/ArduinoWebController/arduino.json', requestString, function (err) {
+    if (err) throw err;
+  });
+  console.log('  Updated!\n');
+  res.end();
+});
 
 
 
