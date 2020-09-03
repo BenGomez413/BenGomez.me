@@ -51,20 +51,6 @@ nav li:hover{
 }
 
 
-
-::-moz-selection {
-	background: #3D8399;
-	color: #D9D5C8;
-	text-shadow: none;
-}
-
-::selection {
-	background: #3D8399;
-	color: #fff;
-	text-shadow: none;
-}
-
-
 .hero {
 	background: linear-gradient(#24292ec0, #00000000);
 	width: 100%;
@@ -73,14 +59,6 @@ nav li:hover{
 	padding: 50px;
 	color: #D9D5C8;
 	text-align: center;
-}
-
-.hero p {
-	color: #BA6946;
-	font-family: 'Codystar', cursive;
-	font-size: 50px;
-	text-align: right;
-	width: 500px;
 }
 
 .projectContainer {
@@ -149,24 +127,6 @@ nav li:hover{
 	box-shadow: 4px 0px 5px rgba(0, 0, 0, 0.25);
 }
 
-.AERwebsite {
-	background-image: url(Assets/AERwebsite.jpg);
-	border-color: #BA6946;
-	background-position: center;
-	background-size: cover;
-	background-repeat: no-repeat;
-}
-
-.AERwebsite h1{
-	background-color: #24292ee5;
-	text-align: center;
-	color: white;
-	margin: 0px;
-	border-radius: 10px 10px 0 0;
-	padding: 15px;
-}
-
-
 
 .vignette {
 	background: radial-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.85));
@@ -182,7 +142,28 @@ footer{
 	color: #D9D5C8;
 	width: 100%;
 	margin-top: 30px;
-	padding: 50px 10%;
+	padding: 30px 10%;
+	text-align: center;
+}
+
+footer h1{
+	padding: 5px;
+}
+
+footer ul{
+	list-style-type: none;
+}
+footer li{
+	padding: 5px;
+}
+
+footer a{
+	color: #D9D5C8;
+	text-decoration: none;
+}
+
+footer i{
+	padding: 0 10px;
 }
 
 
