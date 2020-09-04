@@ -8,7 +8,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const fs = require('fs');
 
-app.get("/getJSON", function (req, res) {
+app.get("*/getJSON", function (req, res) {
   let rawdata = fs.readFileSync('public/ArduinoWebController/arduino.json');
   let info = JSON.parse(rawdata);
   //console.log(info);  
@@ -20,7 +20,7 @@ app.get("/getJSON", function (req, res) {
 app.use(express.json({
   limit: '1mb'
 }));
-app.post('/updateJSON', (req, res) => {
+app.post('*/updateJSON', (req, res) => {
   console.log(' *UPDATE requested');
   //console.log(req.body);
   let requestString = JSON.stringify(req.body, null, 2);
