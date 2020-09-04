@@ -1,8 +1,8 @@
-let arduinoJSON = { 
-  "device": "MKR1010",
-  "red": "50",
-  "green": "100",
-  "blue": "255"
+let arduinoJSON = {
+	"device": "MKR1010",
+	"red": "50",
+	"green": "100",
+	"blue": "255"
 }
 
 let r = arduinoJSON.red;
@@ -41,6 +41,7 @@ for (let i = 0; i < slidersOutputs.length; i++) {
 getJSON();
 
 document.getElementById('rgb-button').addEventListener('click', setRGB);
+
 function setRGB() {
 	arduinoJSON.red = document.getElementById("redRange").value;
 	arduinoJSON.green = document.getElementById("greenRange").value;
@@ -50,13 +51,28 @@ function setRGB() {
 	//console.log(`rgb(${arduinoJSON.red}, ${arduinoJSON.green}, ${arduinoJSON.blue})`);
 }
 
+// function getJSON() {
+// 	fetch('/getJSON') // Call the fetch function passing the url of the API as a parameter
+// 		.then(async function (res) {
+// 			let incommingData = await res.json();
+// 			console.log(incommingData);
+// 			arduinoJSON = incommingData;
+// 			//console.log(`rgb(${arduinoJSON.red}, ${arduinoJSON.green}, ${arduinoJSON.blue})`);
+// 			updateTable();
+// 		})
+// 		.catch(function (err) {
+// 			console.log(err);
+// 		});
+// }
+
+
 function getJSON() {
-	fetch('/getJSON') // Call the fetch function passing the url of the API as a parameter
-		.then(async function (res) {
-			let incommingData = await res.json();
-			console.log(incommingData);
-			arduinoJSON = incommingData;
-			//console.log(`rgb(${arduinoJSON.red}, ${arduinoJSON.green}, ${arduinoJSON.blue})`);
+	fetch('/getJSON')
+		.then(res => res.json())
+		.then(function (data) {
+			console.log(data);
+			arduinoJSON = data;
+
 			updateTable();
 		})
 		.catch(function (err) {
@@ -78,20 +94,19 @@ function updateTable() {
 
 
 function updateJSON(updatedJSON) {
-  const options = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(updatedJSON)
-  };
+	const options = {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(updatedJSON)
+	};
 	fetch('/updateJSON', options)
-	.then(async function (res) {
-		updateTable();
-		getJSON();
-	})
-	.catch(function (err) {
-		console.log(err);
-	});
+		.then(async function (res) {
+			updateTable();
+			getJSON();
+		})
+		.catch(function (err) {
+			console.log(err);
+		});
 }
-
