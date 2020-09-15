@@ -1,2 +1,14 @@
 resume
 
+/*commit to my computer
+git status
+git init
+touch .gitignore 
+  -> add node_modules/ to gitignore
+git add .
+git commit -m "message"
+
+
+//connect node app to database(mongoDB)
+//mongooese js
+//create a request route 

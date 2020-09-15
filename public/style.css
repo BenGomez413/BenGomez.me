@@ -50,6 +50,16 @@ nav li:hover{
 	color:#cc7b58;
 }
 
+nav a{
+	color: #BA6946;
+	text-decoration: none;
+}
+
+nav a:hover{
+	cursor: pointer;
+	color:#cc7b58;
+}
+
 
 .hero {
 	background: linear-gradient(#24292ec0, #00000000);
