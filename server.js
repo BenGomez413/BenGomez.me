@@ -4,6 +4,7 @@ const port = 3000;
 
 const path = require('path');
 const fs = require('fs');
+app.set('trust proxy', true);
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json({
