@@ -1,12 +1,12 @@
-resume
-
 /*commit to my computer
 git status
 git init
 touch .gitignore 
   -> add node_modules/ to gitignore
+
 git add .
 git commit -m "message"
+git push
 
 
 //connect node app to database(mongoDB)

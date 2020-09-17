@@ -187,6 +187,9 @@ table{
   text-align: center;
 }
 
+th,td{
+  width: 50%;
+}
 th{
   background-color: #5c564c;
   color: #D9D5C8;

@@ -9,6 +9,9 @@ let r = arduinoJSON.red;
 let g = arduinoJSON.green;
 let b = arduinoJSON.blue;
 
+let response = "This is from the Arduino";
+let command = "You do this!";
+
 let slidersOutputs = [
 	[document.getElementById("redRange"), document.getElementById("redValue")],
 	[document.getElementById("greenRange"), document.getElementById("greenValue")],
@@ -38,7 +41,7 @@ for (let i = 0; i < slidersOutputs.length; i++) {
 }
 
 //SETUP
-getJSON();
+// getJSON();
 
 document.getElementById('rgb-button').addEventListener('click', setRGB);
 
@@ -46,8 +49,9 @@ function setRGB() {
 	arduinoJSON.red = document.getElementById("redRange").value;
 	arduinoJSON.green = document.getElementById("greenRange").value;
 	arduinoJSON.blue = document.getElementById("blueRange").value;
-	updateJSON(arduinoJSON);
-	updateTable();
+	// updateJSON(arduinoJSON);
+	command = `rgb(${r}, ${g}, ${b})`;
+	updateMongoDB();
 	//console.log(`rgb(${arduinoJSON.red}, ${arduinoJSON.green}, ${arduinoJSON.blue})`);
 }
 
@@ -66,13 +70,70 @@ function setRGB() {
 // }
 
 
-function getJSON() {
-	fetch('/getJSON')
-		.then(res => res.json())
-		.then(function (data) {
-			console.log(data);
-			arduinoJSON = data;
+// function getJSON() {
+// 	fetch('/getJSON')
+// 		.then(res => res.json())
+// 		.then(function (data) {
+// 			console.log(data);
+// 			arduinoJSON = data;
 
+// 			updateTable();
+// 		})
+// 		.catch(function (err) {
+// 			console.log(err);
+// 		});
+// }
+
+function updateTable() {
+	const tableFromDevice = document.getElementById('table-from-device');
+	const tableToDevice = document.getElementById('table-to-device');
+
+	tableFromDevice.innerHTML = response;
+	tableToDevice.innerHTML = command;
+}
+
+
+// function updateJSON(updatedJSON) {
+// 	const options = {
+// 		method: 'POST',
+// 		headers: {
+// 			'Content-Type': 'application/json'
+// 		},
+// 		body: JSON.stringify(updatedJSON)
+// 	};
+// 	fetch('/updateJSON', options)
+// 		.then(async function (res) {
+// 			updateTable();
+// 			getJSON();
+// 		})
+// 		.catch(function (err) {
+// 			console.log(err);
+// 		});
+// }
+
+
+
+
+
+//----------------------------------------MongoDB---------------------------------------------
+//GET
+getFromMongoDB();
+
+function getFromMongoDB() {
+	fetch('/getMicrocontrollerData', {
+			method: 'POST',
+			headers: {
+				"Content-Type": "application/json; charset=utf-8"
+			},
+			body: JSON.stringify({name: 'MKR1010'})
+		})
+		.then(res => res.json())
+		.then(data => {
+			//console.log(data[0]);
+			r = data[0].rgb.red;
+			g = data[0].rgb.green;
+			b = data[0].rgb.blue;
+			document.getElementById("rgbPreview").style.backgroundColor = `rgb(${r},${g},${b})`;
 			updateTable();
 		})
 		.catch(function (err) {
@@ -80,31 +141,29 @@ function getJSON() {
 		});
 }
 
-function updateTable() {
-	const tableDevice = document.getElementById('table-device');
-	const tableRed = document.getElementById('table-red');
-	const tableGreen = document.getElementById('table-green');
-	const tableBlue = document.getElementById('table-blue');
 
-	tableDevice.innerHTML = arduinoJSON.device;
-	tableRed.innerHTML = arduinoJSON.red;
-	tableGreen.innerHTML = arduinoJSON.green;
-	tableBlue.innerHTML = arduinoJSON.blue;
-}
-
-
-function updateJSON(updatedJSON) {
-	const options = {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json'
-		},
-		body: JSON.stringify(updatedJSON)
-	};
-	fetch('/updateJSON', options)
-		.then(async function (res) {
+//UPDATE
+document.getElementById('switch-button').addEventListener('click', updateMongoDB);
+function updateMongoDB() {
+	fetch('/updateMongoDB', {
+			method: 'PUT',
+			headers: {
+				"Content-Type": "application/json; charset=utf-8"
+			},
+			body: JSON.stringify({
+				name: 'MKR1010',
+				browser: command,
+				rgb: {
+					red: r,
+					green: g,
+					blue: b
+				}
+			})
+		})
+		.then(res => res.json())
+		.then(data => {
+			console.log(data);
 			updateTable();
-			getJSON();
 		})
 		.catch(function (err) {
 			console.log(err);
