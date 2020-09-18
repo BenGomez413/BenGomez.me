@@ -1,17 +1,11 @@
-let arduinoJSON = {
-	"device": "MKR1010",
-	"red": "50",
-	"green": "100",
-	"blue": "255"
-}
-
-let r = arduinoJSON.red;
-let g = arduinoJSON.green;
-let b = arduinoJSON.blue;
-
-let response = "This is from the Arduino";
+let r; 
+let g;
+let b;
+let response = "This is from the Device";
 let command = "You do this!";
 
+
+//Update Color Preview as Sliders are moved.
 let slidersOutputs = [
 	[document.getElementById("redRange"), document.getElementById("redValue")],
 	[document.getElementById("greenRange"), document.getElementById("greenValue")],
@@ -41,86 +35,28 @@ for (let i = 0; i < slidersOutputs.length; i++) {
 }
 
 //SETUP
-// getJSON();
+getDeviceInfo();
 
+//UPDATE RGB 
 document.getElementById('rgb-button').addEventListener('click', setRGB);
-
 function setRGB() {
-	arduinoJSON.red = document.getElementById("redRange").value;
-	arduinoJSON.green = document.getElementById("greenRange").value;
-	arduinoJSON.blue = document.getElementById("blueRange").value;
-	// updateJSON(arduinoJSON);
 	command = `rgb(${r}, ${g}, ${b})`;
 	updateMongoDB();
-	//console.log(`rgb(${arduinoJSON.red}, ${arduinoJSON.green}, ${arduinoJSON.blue})`);
 }
 
-// function getJSON() {
-// 	fetch('/getJSON') // Call the fetch function passing the url of the API as a parameter
-// 		.then(async function (res) {
-// 			let incommingData = await res.json();
-// 			console.log(incommingData);
-// 			arduinoJSON = incommingData;
-// 			//console.log(`rgb(${arduinoJSON.red}, ${arduinoJSON.green}, ${arduinoJSON.blue})`);
-// 			updateTable();
-// 		})
-// 		.catch(function (err) {
-// 			console.log(err);
-// 		});
-// }
-
-
-// function getJSON() {
-// 	fetch('/getJSON')
-// 		.then(res => res.json())
-// 		.then(function (data) {
-// 			console.log(data);
-// 			arduinoJSON = data;
-
-// 			updateTable();
-// 		})
-// 		.catch(function (err) {
-// 			console.log(err);
-// 		});
-// }
-
+//UPDATE TABLE
 function updateTable() {
 	const tableFromDevice = document.getElementById('table-from-device');
 	const tableToDevice = document.getElementById('table-to-device');
-
 	tableFromDevice.innerHTML = response;
 	tableToDevice.innerHTML = command;
 }
 
-
-// function updateJSON(updatedJSON) {
-// 	const options = {
-// 		method: 'POST',
-// 		headers: {
-// 			'Content-Type': 'application/json'
-// 		},
-// 		body: JSON.stringify(updatedJSON)
-// 	};
-// 	fetch('/updateJSON', options)
-// 		.then(async function (res) {
-// 			updateTable();
-// 			getJSON();
-// 		})
-// 		.catch(function (err) {
-// 			console.log(err);
-// 		});
-// }
-
-
-
-
-
 //----------------------------------------MongoDB---------------------------------------------
 //GET
-getFromMongoDB();
-
-function getFromMongoDB() {
-	fetch('/getMicrocontrollerData', {
+document.getElementById('switch-button').addEventListener('click', getDeviceInfo);
+function getDeviceInfo() {
+	fetch('/getDeviceInfo', {
 			method: 'POST',
 			headers: {
 				"Content-Type": "application/json; charset=utf-8"
@@ -129,7 +65,7 @@ function getFromMongoDB() {
 		})
 		.then(res => res.json())
 		.then(data => {
-			//console.log(data[0]);
+			console.log(data[0]);
 			r = data[0].rgb.red;
 			g = data[0].rgb.green;
 			b = data[0].rgb.blue;
@@ -141,9 +77,7 @@ function getFromMongoDB() {
 		});
 }
 
-
 //UPDATE
-document.getElementById('switch-button').addEventListener('click', updateMongoDB);
 function updateMongoDB() {
 	fetch('/updateMongoDB', {
 			method: 'PUT',

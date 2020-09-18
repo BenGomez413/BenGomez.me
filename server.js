@@ -28,7 +28,7 @@ app.post("/postNewMicrocontroller", async (req, res) => {
 
 
 //GET JSON to MongoDB--------------------------------
-app.post('/getMicrocontrollerData', async (req, res) => {
+app.post('/getDeviceInfo', async (req, res) => {
   try {
     console.log("Got data for:", req.body.name);
     res.status(200);
@@ -61,7 +61,6 @@ app.put('/updateMongoDB', async (req, res) => {
     res.send(err);
   }
 })
-
 
 
 //----------Keep at end of file-----------//
