@@ -31,20 +31,6 @@ app.post("/postNewMicrocontroller", async (req, res) => {
 
 
 //GET JSON to MongoDB--------------------------------
-app.post('/getDeviceInfo', async (req, res) => {
-  try {
-    console.log("Got data for:", req.body.name);
-    res.status(200);
-    res.send(await Microcontroller.find({
-      name: req.body.name
-    }).exec());
-  } catch (err) {
-    res.status(500);
-    res.send(err);
-  }
-});
-
-
 app.get('/getInfo', async function(req, res) {
   let device = req.query.device;
   try{
@@ -57,7 +43,7 @@ app.get('/getInfo', async function(req, res) {
     res.status(500);
     res.send(err);
   }
-})
+});
 
 
 //UPDATE JSON to MongoDB--------------------------------
@@ -78,7 +64,7 @@ app.put('/updateMongoDB', async (req, res) => {
     res.status(500);
     res.send(err);
   }
-})
+});
 
 
 
