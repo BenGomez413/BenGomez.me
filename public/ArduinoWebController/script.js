@@ -56,25 +56,25 @@ function updateTable() {
 //GET
 document.getElementById('switch-button').addEventListener('click', getDeviceInfo);
 function getDeviceInfo() {
-	fetch('/getDeviceInfo', {
-			method: 'POST',
-			headers: {
-				"Content-Type": "application/json; charset=utf-8"
-			},
-			body: JSON.stringify({name: 'MKR1010'})
-		})
-		.then(res => res.json())
-		.then(data => {
-			console.log(data[0]);
-			r = data[0].rgb.red;
-			g = data[0].rgb.green;
-			b = data[0].rgb.blue;
-			document.getElementById("rgbPreview").style.backgroundColor = `rgb(${r},${g},${b})`;
-			updateTable();
-		})
-		.catch(function (err) {
+	fetch('/getInfo?device=MKR1010')
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+		console.log(data);
+		r = data[0].rgb.red;
+		g = data[0].rgb.green;
+		b = data[0].rgb.blue;
+
+		response = data[0].device;
+		command = data[0].browser;
+
+		document.getElementById("rgbPreview").style.backgroundColor = `rgb(${r},${g},${b})`;
+		updateTable();
+	})
+	.catch(function (err) {
 			console.log(err);
-		});
+	});
 }
 
 //UPDATE
@@ -103,3 +103,4 @@ function updateMongoDB() {
 			console.log(err);
 		});
 }
+

@@ -12,6 +12,9 @@ require("dotenv/config");
 const Microcontroller = require('./model/microcontroller');
 
 
+
+
+
 //POST new JSON to MongoDB--------------------------------
 app.post("/postNewMicrocontroller", async (req, res) => {
   try {
@@ -42,6 +45,21 @@ app.post('/getDeviceInfo', async (req, res) => {
 });
 
 
+app.get('/getInfo', async function(req, res) {
+  let device = req.query.device;
+  try{
+    console.log("Got info for:", device);
+    res.status(200);
+    res.send(await Microcontroller.find({
+      name: device
+    }).exec());
+  } catch (err) {
+    res.status(500);
+    res.send(err);
+  }
+})
+
+
 //UPDATE JSON to MongoDB--------------------------------
 app.put('/updateMongoDB', async (req, res) => {
   try {
@@ -61,6 +79,12 @@ app.put('/updateMongoDB', async (req, res) => {
     res.send(err);
   }
 })
+
+
+
+
+
+
 
 
 //----------Keep at end of file-----------//
