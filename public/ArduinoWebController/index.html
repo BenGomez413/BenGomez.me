@@ -13,12 +13,24 @@
 
 	<header>
 		<h1>Device Controller</h1>
+
+		<select name="select">
+			<option selected>Select your Device</option>
+			<option>MKR1010</option>
+			<option>Raspberry Pi 4</option>
+		</select>
+		
 	</header>
+
+	
 
 	<div class="gridContainer">
 
 		<div class="container rgb">
-			<h1>RGB</h1>
+			<div class="rgb-title-container">
+				<h1>RGB</h1>
+				<div class="rgbPreview" id="rgbPreview"></div>
+			</div>
 
 			<div class="color red">
 				<label>RED</label>
@@ -41,10 +53,6 @@
 			<input class="submit" name="rgbSubmit" type="submit" value="SEND" id="rgb-button">
 		</div>
 
-
-		<div class="container rgbPreviewContainer">
-			<div class="rgbPreview" id="rgbPreview"></div>
-		</div>
 
 		<div class="container switchBoard">
 			<h1>SWITCH BOARD</h1><br>

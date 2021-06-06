@@ -35,7 +35,16 @@ for (let i = 0; i < slidersOutputs.length; i++) {
 }
 
 //SETUP
-getDeviceInfo();
+setup();
+
+function setup(){
+	getDeviceInfo();
+	//buildComponents();
+	//
+}
+
+
+
 
 //UPDATE RGB 
 document.getElementById('rgb-button').addEventListener('click', setRGB);
@@ -63,8 +72,14 @@ function getDeviceInfo() {
   .then((data) => {
 		console.log(data);
 		r = data[0].rgb.red;
+		document.getElementById("redRange").value = r;
+		document.getElementById("redValue").value = r;
 		g = data[0].rgb.green;
+		document.getElementById("greenRange").value = g;
+		document.getElementById("greenValue").innerHTML = g;
 		b = data[0].rgb.blue;
+		document.getElementById("blueRange").value = data[0].rgb.blue;
+		document.getElementById("blueValue").innerHTML = g;
 
 		response = data[0].device;
 		command = data[0].browser;

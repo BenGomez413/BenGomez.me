@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const Microcontroller = new mongoose.Schema({
+const Device = new mongoose.Schema({
   name: {
     type: String,
     required: true
@@ -20,4 +20,4 @@ const Microcontroller = new mongoose.Schema({
   }
 })
 
-module.exports = mongoose.model("microcontroller", Microcontroller);
+module.exports = mongoose.model("Device", Device);
