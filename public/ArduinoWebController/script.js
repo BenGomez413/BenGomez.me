@@ -1,9 +1,45 @@
-let r; 
-let g;
-let b;
-let response = "This is from the Device";
-let command = "You do this!";
+let r = 0; 
+let g = 0;
+let b = 0;
 
+let rgbPreview = document.getElementById("rgbPreview");
+let log = document.getElementById("log");
+
+let command;
+
+const ws = new WebSocket("ws:localhost:3000");
+
+ws.addEventListener("open", () => {
+	console.log("You have connected!");
+});
+
+ws.addEventListener("message", ({ data }) => {
+	
+	const regex = /rgb\(\d+,\d+,\d+\)/;      //check if rgb(225,255,255)
+	rgbPreview.style.backgroundColor = regex.exec(data);
+
+	let li = document.createElement("LI"); 
+	li.className = "thisClient";
+
+	let span = document.createElement("SPAN");
+	let time = `${new Date().getHours()}:${new Date().getMinutes()}.${new Date().getSeconds()}`;
+	span.className = "timestamp";
+	span.append(time);
+
+	let span2 = document.createElement("SPAN");	
+	span2.append(data);
+
+	let div = document.createElement("DIV");
+	div.className = "logRGB";
+	div.style.backgroundColor = regex.exec(data);
+
+	li.append(span);
+	li.append(span2); 
+	li.append(div);
+
+	log.append(li);
+	log.scrollTop = log.scrollHeight;
+});
 
 //Update Color Preview as Sliders are moved.
 let slidersOutputs = [
@@ -30,92 +66,46 @@ for (let i = 0; i < slidersOutputs.length; i++) {
 			b = this.value;
 		}
 
-		document.getElementById("rgbPreview").style.backgroundColor = `rgb(${r},${g},${b})`;
+		rgbPreview.style.backgroundColor = `rgb(${r},${g},${b})`;
 	}
 }
 
-//SETUP
-setup();
 
-function setup(){
-	getDeviceInfo();
-	//buildComponents();
-	//
+
+//SEND COMMAND 
+document.getElementById('rgb-button').addEventListener('click', sendRGB);
+
+function sendRGB(){
+	command = `rgb(${r},${g},${b})`;
+	ws.send(command);
+	
+	let li = document.createElement("LI"); 
+	li.className = "thisClient";
+
+	let div = document.createElement("DIV");
+	div.className = "timestamp";
+	div.append(getTimeStamp());
+	li.append(div);
+	
+	let span = document.createElement("SPAN");	
+	span.append(command);
+	li.append(span);
+
+	div = document.createElement("DIV");
+	div.className = "logRGB";
+	div.style.backgroundColor = command;
+	li.append(div);
+
+	log.append(li);
+	log.scrollTop = log.scrollHeight;
 }
 
+function getTimeStamp(){
+	let hours = new Date().getHours().toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
+	let minutes = new Date().getMinutes().toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
+	let seconds = new Date().getSeconds().toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
 
-
-
-//UPDATE RGB 
-document.getElementById('rgb-button').addEventListener('click', setRGB);
-function setRGB() {
-	command = `rgb(${r}, ${g}, ${b})`;
-	updateMongoDB();
-}
-
-//UPDATE TABLE
-function updateTable() {
-	const tableFromDevice = document.getElementById('table-from-device');
-	const tableToDevice = document.getElementById('table-to-device');
-	tableFromDevice.innerHTML = response;
-	tableToDevice.innerHTML = command;
-}
-
-//----------------------------------------MongoDB---------------------------------------------
-//GET
-document.getElementById('switch-button').addEventListener('click', getDeviceInfo);
-function getDeviceInfo() {
-	fetch('/getInfo?device=MKR1010')
-  .then((response) => {
-    return response.json();
-  })
-  .then((data) => {
-		console.log(data);
-		r = data[0].rgb.red;
-		document.getElementById("redRange").value = r;
-		document.getElementById("redValue").value = r;
-		g = data[0].rgb.green;
-		document.getElementById("greenRange").value = g;
-		document.getElementById("greenValue").innerHTML = g;
-		b = data[0].rgb.blue;
-		document.getElementById("blueRange").value = data[0].rgb.blue;
-		document.getElementById("blueValue").innerHTML = g;
-
-		response = data[0].device;
-		command = data[0].browser;
-
-		document.getElementById("rgbPreview").style.backgroundColor = `rgb(${r},${g},${b})`;
-		updateTable();
-	})
-	.catch(function (err) {
-			console.log(err);
-	});
-}
-
-//UPDATE
-function updateMongoDB() {
-	fetch('/updateMongoDB', {
-			method: 'PUT',
-			headers: {
-				"Content-Type": "application/json; charset=utf-8"
-			},
-			body: JSON.stringify({
-				name: 'MKR1010',
-				browser: command,
-				rgb: {
-					red: r,
-					green: g,
-					blue: b
-				}
-			})
-		})
-		.then(res => res.json())
-		.then(data => {
-			console.log(data);
-			updateTable();
-		})
-		.catch(function (err) {
-			console.log(err);
-		});
+	let timestamp = `${hours}:${minutes}.${seconds}`;
+	return timestamp;
 }
 

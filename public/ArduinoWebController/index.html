@@ -27,10 +27,9 @@
 	<div class="gridContainer">
 
 		<div class="container rgb">
-			<div class="rgb-title-container">
-				<h1>RGB</h1>
-				<div class="rgbPreview" id="rgbPreview"></div>
-			</div>
+
+			<h1>RGB</h1>
+
 
 			<div class="color red">
 				<label>RED</label>
@@ -50,7 +49,15 @@
 				<input class="slider" name="blue" type="range" min="0" max="255" value="0" id="blueRange">
 			</div>
 
+			<div class="rgbPreview" id="rgbPreview"></div>
+
 			<input class="submit" name="rgbSubmit" type="submit" value="SEND" id="rgb-button">
+		</div>
+
+		<div class="container sendText">
+			<h1>SEND TEXT</h1><br>
+			<textarea name="" id="" cols="30" rows="10"></textarea>
+			<input class="submit" name="textSubmit" type="submit" value="SEND" id="text-button">
 		</div>
 
 
@@ -86,19 +93,9 @@
 		</div>
 	</div>
 
-	<section class="databaseTable">
-		<table>
-			<tr>
-				<th>From Device</th>
-				<th>To Device</th>
-			</tr>
-
-			<tr>
-				<td id="table-from-device">I have no brain yet</td>
-				<td id="table-to-device">this should update soon</td>
-			</tr>
-		</table>
-
+	<section class="LOG">
+		<h2>LOG</h2>
+		<ul class="log" id="log"></ul>
 	</section>
 
 
