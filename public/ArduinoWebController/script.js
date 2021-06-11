@@ -1,111 +1,204 @@
-let r = 0; 
-let g = 0;
-let b = 0;
+let r = 0
+let g = 0
+let b = 0
 
-let rgbPreview = document.getElementById("rgbPreview");
-let log = document.getElementById("log");
+let rgb
+let txt
 
-let command;
+const rgbContainer = document.getElementById('rgbContainer')
+const rgbPreview = document.getElementById('rgbPreview')
 
-const ws = new WebSocket("ws:localhost:3000");
+const txtContainer = document.getElementById('txtContainer')
+const txtArea = document.getElementById('txtArea')
 
-ws.addEventListener("open", () => {
-	console.log("You have connected!");
-});
+const logTable = document.getElementById('logTable')
+const logTableContainer = document.getElementById('tableContainer')
 
-ws.addEventListener("message", ({ data }) => {
-	
-	const regex = /rgb\(\d+,\d+,\d+\)/;      //check if rgb(225,255,255)
-	rgbPreview.style.backgroundColor = regex.exec(data);
+//KEYBOARD LISTENER
+const keyboardElements = document.getElementsByClassName('keyboard')
+for (let i = 0; i < keyboardElements.length; i++) {
+  keyboardElements[i].addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const txtCheck = /txtArea/g
+      if (txtCheck.test(document.activeElement.id)) {
+        e.preventDefault()
+        sendTXT()
+      }
+      const sliderCheck = /Range/g
+      if (sliderCheck.test(document.activeElement.id)) {
+        sendRGB()
+      }
+    }
+  })
+}
 
-	let li = document.createElement("LI"); 
-	li.className = "thisClient";
+/*
+ _ _ _       _    ___            _          _   
+| | | | ___ | |_ / __> ___  ___ | |__ ___ _| |_ 
+| | | |/ ._>| . \\__ \/ . \/ | '| / // ._> | |  
+|__/_/ \___.|___/<___/\___/\_|_.|_\_\\___. |_|  
+                                                
+*/
+const ws = new WebSocket('ws:localhost:3000')
+ws.onopen = function (e) {
+  ws.send('BROWSER/ALL:CONNECT')
+}
 
-	let span = document.createElement("SPAN");
-	let time = `${new Date().getHours()}:${new Date().getMinutes()}.${new Date().getSeconds()}`;
-	span.className = "timestamp";
-	span.append(time);
+ws.onmessage = function ({ data }) {
+  const regex = /^(.+)\/(.+):(.+)/g
+  let parsedData = regex.exec(data)
+  regex.lastIndex = 0 //* RESET REGEX i don't really get why?
+  if (regex.test(parsedData)) {
+    let parsedSender = parsedData[1]
+    let parsedTarget = parsedData[2]
+    let parsedCommand = parsedData[3]
+    createTableRow(parsedSender, parsedTarget, parsedCommand)
+  }
 
-	let span2 = document.createElement("SPAN");	
-	span2.append(data);
+  logTableContainer.scrollTop = logTableContainer.scrollHeight
+}
 
-	let div = document.createElement("DIV");
-	div.className = "logRGB";
-	div.style.backgroundColor = regex.exec(data);
+ws.onclose = function (event) {
+  if (event.wasClean) {
+    console.log(
+      `[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`
+    )
+  } else {
+    // e.g. server process killed or network down
+    // event.code is usually 1006 in this case
+    console.log('[close] Connection died')
+  }
+}
 
-	li.append(span);
-	li.append(span2); 
-	li.append(div);
+ws.onerror = function (error) {
+  console.log(`[error] ${error.message}`)
+}
 
-	log.append(li);
-	log.scrollTop = log.scrollHeight;
-});
+/*
+           _     ___  _  _    _           
+ _ _  ___ | |_  / __>| |<_> _| | ___  _ _ 
+| '_>/ . || . \ \__ \| || |/ . |/ ._>| '_>
+|_|  \_. ||___/ <___/|_||_|\___|\___.|_|  
+     <___'                                
+*/
 
 //Update Color Preview as Sliders are moved.
 let slidersOutputs = [
-	[document.getElementById("redRange"), document.getElementById("redValue")],
-	[document.getElementById("greenRange"), document.getElementById("greenValue")],
-	[document.getElementById("blueRange"), document.getElementById("blueValue")]
-];
+  [document.getElementById('redRange'), document.getElementById('redValue')],
+  [
+    document.getElementById('greenRange'),
+    document.getElementById('greenValue'),
+  ],
+  [document.getElementById('blueRange'), document.getElementById('blueValue')],
+]
 
 for (let i = 0; i < slidersOutputs.length; i++) {
-	slidersOutputs[i][1].innerHTML = slidersOutputs[i][0].value;
+  slidersOutputs[i][1].innerHTML = slidersOutputs[i][0].value
 
-	slidersOutputs[i][0].oninput = function () {
-		slidersOutputs[i][1].innerHTML = this.value;
-
-		if (i === 0) {
-			r = this.value;
-		}
-
-		if (i === 1) {
-			g = this.value;
-		}
-
-		if (i === 2) {
-			b = this.value;
-		}
-
-		rgbPreview.style.backgroundColor = `rgb(${r},${g},${b})`;
-	}
+  slidersOutputs[i][0].oninput = function () {
+    slidersOutputs[i][1].innerHTML = this.value
+    if (i === 0) {
+      r = this.value
+    }
+    if (i === 1) {
+      g = this.value
+    }
+    if (i === 2) {
+      b = this.value
+    }
+    rgbPreview.style.backgroundColor = `rgb(${r},${g},${b})`
+  }
 }
 
-
-
-//SEND COMMAND 
-document.getElementById('rgb-button').addEventListener('click', sendRGB);
-
-function sendRGB(){
-	command = `rgb(${r},${g},${b})`;
-	ws.send(command);
-	
-	let li = document.createElement("LI"); 
-	li.className = "thisClient";
-
-	let div = document.createElement("DIV");
-	div.className = "timestamp";
-	div.append(getTimeStamp());
-	li.append(div);
-	
-	let span = document.createElement("SPAN");	
-	span.append(command);
-	li.append(span);
-
-	div = document.createElement("DIV");
-	div.className = "logRGB";
-	div.style.backgroundColor = command;
-	li.append(div);
-
-	log.append(li);
-	log.scrollTop = log.scrollHeight;
+/*
+ ___                                 _     
+|  _> ___ ._ _ _ ._ _ _  ___ ._ _  _| | ___
+| <__/ . \| ' ' || ' ' |<_> || ' |/ . |<_-<
+`___/\___/|_|_|_||_|_|_|<___||_|_|\___|/__/
+                                           
+*/
+document.getElementById('rgbSEND').addEventListener('click', sendRGB)
+function sendRGB() {
+  rgb = `rgb(${r},${g},${b})`
+  ws.send(`${getSender()}/${getTarget()}:${rgb}`)
 }
 
-function getTimeStamp(){
-	let hours = new Date().getHours().toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
-	let minutes = new Date().getMinutes().toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
-	let seconds = new Date().getSeconds().toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
-
-	let timestamp = `${hours}:${minutes}.${seconds}`;
-	return timestamp;
+document.getElementById('txtSEND').addEventListener('click', sendTXT)
+function sendTXT() {
+  txt = txtArea.value
+  txt = txt.replace('\r\n', ' ').replace('\n', ' ')
+  ws.send(`${getSender()}/${getTarget()}:${txt}`)
 }
 
+/*
+ ___                 _    _               
+| __>_ _ ._ _  ___ _| |_ <_> ___ ._ _  ___
+| _>| | || ' |/ | ' | |  | |/ . \| ' |<_-<
+|_| `___||_|_|\_|_. |_|  |_|\___/|_|_|/__/
+                                          
+*/
+function getTimeStamp() {
+  let hours = new Date()
+    .getHours()
+    .toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })
+  let minutes = new Date()
+    .getMinutes()
+    .toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })
+  let seconds = new Date()
+    .getSeconds()
+    .toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })
+  let timestamp = `${hours}:${minutes}.${seconds}`
+  return timestamp
+}
+
+function getSender() {
+  let sender = document.getElementById('sender').value
+  return sender
+}
+
+function getTarget() {
+  let target = document.getElementById('target').value
+  return target
+}
+
+function createTableRow(sender, target, command) {
+  rgbRegex = /rgb\(\d+,\d+,\d+\)/gm
+  let color = rgbRegex.exec(command)
+
+  //Create new teble Row
+  let tr = document.createElement('TR')
+
+  //timestamp
+  let td = document.createElement('TD')
+  td.className = 'timestamp'
+  td.append(getTimeStamp())
+  tr.append(td)
+
+  //sender
+  td = document.createElement('TD')
+  td.className = 'sender'
+  td.append(sender)
+  tr.append(td)
+
+  //target
+  td = document.createElement('TD')
+  td.className = 'target'
+  td.append(target)
+  tr.append(td)
+
+  //command
+  td = document.createElement('TD')
+  td.className = 'command'
+  td.append(command)
+  tr.append(td)
+
+  //color
+  td = document.createElement('TD')
+  td.className = 'table-color'
+  td.style.backgroundColor = color
+  tr.append(td)
+
+  logTable.append(tr)
+  logTableContainer.scrollTop = logTableContainer.scrollHeight
+  console.log(`${sender}/${target}:${command}`)
+}

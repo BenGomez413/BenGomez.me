@@ -13,23 +13,12 @@
 
 	<header>
 		<h1>Device Controller</h1>
-
-		<select name="select">
-			<option selected>Select your Device</option>
-			<option>MKR1010</option>
-			<option>Raspberry Pi 4</option>
-		</select>
-		
 	</header>
-
-	
-
 	<div class="gridContainer">
 
-		<div class="container rgb">
+		<div class="container rgb keyboard" id="rgbContainer">
 
 			<h1>RGB</h1>
-
 
 			<div class="color red">
 				<label>RED</label>
@@ -51,17 +40,17 @@
 
 			<div class="rgbPreview" id="rgbPreview"></div>
 
-			<input class="submit" name="rgbSubmit" type="submit" value="SEND" id="rgb-button">
+			<input class="submit" type="submit" value="SEND" id="rgbSEND">
 		</div>
 
-		<div class="container sendText">
-			<h1>SEND TEXT</h1><br>
-			<textarea name="" id="" cols="30" rows="10"></textarea>
-			<input class="submit" name="textSubmit" type="submit" value="SEND" id="text-button">
+		<div class="container txt keyboard" id="txtContainer">
+			<h1>TEXT</h1><br>
+			<textarea id="txtArea" cols="30" rows="10"></textarea>
+			<input class="submit" type="submit" value="SEND" id="txtSEND">
 		</div>
 
 
-		<div class="container switchBoard">
+		<div class="container switchBoard keyboard">
 			<h1>SWITCH BOARD</h1><br>
 
 			<div>
@@ -93,9 +82,36 @@
 		</div>
 	</div>
 
-	<section class="LOG">
-		<h2>LOG</h2>
-		<ul class="log" id="log"></ul>
+	
+	<section class="container-full-width LOG">
+		
+	
+		<span class="user-target">
+			<h2>LOG</h2>
+			<span>
+				<span>USER: </span>
+				<input type="text" id="sender" value="BROWSER">
+				<span>TARGET: </span>
+				<select id="target">
+					<option value="ALL">ALL</option>
+					<option value="MKR1010">MKR1010</option>
+				</select>
+			</span>
+		</span>
+	
+	</div>
+
+	<div class="table-container" id="tableContainer">
+		<table id="logTable">
+			<tr>
+				<th>TIME</th>
+				<th>SENDER</th>
+				<th>TARGET</th>
+				<th>COMMAND</th>
+				<th>COLOR</th>
+			</tr>
+		</table>
+	</div>
 	</section>
 
 
