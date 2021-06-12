@@ -44,19 +44,22 @@ wss.on('connection', (ws, req) => {
     if (parsedCommand === 'CONNECT') {
       let unique = true
       for (let i = 0; i < webSockets.length; i++) {
-        if (req.socket.remoteAddress == webSockets[i].id[1]) {
+        if (ws == webSockets[i].socketInfo) {
           unique = false
         }
       }
       if (unique === true) {
         webSockets.push({ id: parsedSender, socketInfo: ws })
+        setInterval(() => {
+          ws.send('PONG')
+        }, 5000)
       }
       wss.clients.forEach(function each(client) {
         if (client.readyState === WebSocket.OPEN) {
           client.send(`${parsedSender}/ALL:CONNECTED`)
         }
       })
-      //console.log(webSockets.map((obj) => obj.id[0]))
+      console.log(webSockets.map((obj) => obj.id))
 
       //If message contains rgb
     } else if (rgbRegex.test(parsedCommand)) {
@@ -64,7 +67,7 @@ wss.on('connection', (ws, req) => {
         if (client.readyState === WebSocket.OPEN) {
           //Locate arduino socket so we can send special format to just it
           let mkr1010Socket = webSockets.find((obj) => obj.id === 'MKR1010')
-          if (client === mkr1010Socket.socketInfo) {
+          if (mkr1010Socket && client === mkr1010Socket.socketInfo) {
             const num = /\d+/g
             let rgbArray
             client.send('rgb')
