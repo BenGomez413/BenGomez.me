@@ -3,14 +3,13 @@ const app = express()
 const port = 3000
 
 const path = require('path')
-const { client } = require('websocket')
 app.use(express.static(path.join(__dirname, 'public')))
 const server = require('http').createServer(app)
 
 //WEBSOCKET
 const WebSocket = require('ws')
 const wss = new WebSocket.Server({ server: server })
-webSockets = []
+let webSockets = []
 
 let parsedData = 'SERVER/ALL:DEFAULT'
 let parsedSender = 'SERVER'
@@ -19,7 +18,6 @@ let parsedCommand = 'DEFAULT'
 
 wss.on('connection', (ws, req) => {
   ws.on('message', function incoming(message) {
-    console.log(req.socket.remoteAddress, message)
     //check if message is in the Format Sender/Target:Command
     let regex = /^(.+)\/(.+):(.+)$/gi
 
@@ -40,16 +38,37 @@ wss.on('connection', (ws, req) => {
 
     const rgbRegex = /rgb\(\d+,\d+,\d+\)/g
 
-    //CLIENT NEED TO SEND A CONNECT MESSAGE TO BE ADDED TO THE webSockets ARRAY
+    // CLIENT NEED TO SEND A CONNECT MESSAGE TO BE ADDED TO THE webSockets ARRAY
     if (parsedCommand === 'CONNECT') {
       let unique = true
+      // Check if websocket(ws) is unique
       for (let i = 0; i < webSockets.length; i++) {
         if (ws == webSockets[i].socketInfo) {
           unique = false
+          console.log('NOT UNIQUE')
         }
       }
+
+      //if websocket is unique but the name(id) is the same overwrite socket info in array else add it to array.
       if (unique === true) {
-        webSockets.push({ id: parsedSender, socketInfo: ws })
+        if (webSockets.length === 0) {
+          webSockets.push({ id: parsedSender, socketInfo: ws })
+        }
+
+        // check if the name is already in the array if it is overwrite the websocket object(.socketInfo) with this new one(ws)
+        for (let i = 0; i < webSockets.length; i++) {
+          if (parsedSender === webSockets[i].id) {
+            console.log('UNIQUE WS BUT DUPLICATE NAME')
+            webSockets[i].socketInfo = ws
+            unique = false
+            break
+          }
+        }
+        if (unique === true) {
+          console.log('UNIQUE')
+          webSockets.push({ id: parsedSender, socketInfo: ws })
+        }
+
         setInterval(() => {
           ws.send('PONG')
         }, 5000)
@@ -60,9 +79,18 @@ wss.on('connection', (ws, req) => {
         }
       })
       console.log(webSockets.map((obj) => obj.id))
-
-      //If message contains rgb
+    } else if (parsedCommand === 'RENAME') {
+      // check if websocket(ws) is in the webSockets array if so overwrite name(.id) with parsedSender
+      for (let i = 0; i < webSockets.length; i++) {
+        if (ws === webSockets[i].socketInfo) {
+          console.log(`RENAME: ${webSockets[i].id} to ${parsedSender}`)
+          webSockets[i].id = parsedSender
+          console.log(webSockets.map((obj) => obj.id))
+          break
+        }
+      }
     } else if (rgbRegex.test(parsedCommand)) {
+      //If message contains rgb
       wss.clients.forEach(function each(client) {
         if (client.readyState === WebSocket.OPEN) {
           //Locate arduino socket so we can send special format to just it
@@ -79,6 +107,8 @@ wss.on('connection', (ws, req) => {
           client.send(message)
         }
       })
+    } else if (message === 'PING') {
+      return
     } else {
       wss.clients.forEach(function each(client) {
         if (client.readyState === WebSocket.OPEN) {
@@ -86,6 +116,7 @@ wss.on('connection', (ws, req) => {
         }
       })
     }
+    console.log(req.socket.remoteAddress, message)
   })
 
   wss.on('close', function () {

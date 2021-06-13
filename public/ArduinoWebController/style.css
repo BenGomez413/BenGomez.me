@@ -42,6 +42,18 @@ input[type='submit'] {
   font-family: Montserrat;
 }
 
+.container {
+  position: relative;
+}
+.container input[type='submit'] {
+  display: block;
+  position: absolute;
+
+  bottom: 20px;
+
+  width: calc(100% - 40px);
+}
+
 input[type='submit']:hover {
   cursor: pointer;
 }
@@ -120,7 +132,7 @@ h1 {
   background-color: rgb(141, 137, 123);
   width: 100%;
   height: 50px;
-  margin-bottom: 15px;
+  margin-bottom: 50px;
   border-radius: 5px;
   border: solid #30303033 3px;
   box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.25);
@@ -177,7 +189,8 @@ h1 {
 .txt textarea {
   background-color: #ebe8df;
   width: 100%;
-  height: 300px;
+  height: 290px;
+  margin-bottom: 15px;
   border-radius: 5px;
   padding: 10px;
   font-size: 1.2rem;
@@ -316,4 +329,30 @@ tr:nth-child(2n + 1) {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #c57a5a;
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media (max-width: 1000px) {
+  .gridContainer,
+  .container-full-width {
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 95%;
+  }
+}
+
+@media (max-width: 800px) {
+  .gridContainer,
+  .container-full-width {
+    grid-template-columns: 1fr;
+    width: 95%;
+  }
+
+  .txt textarea {
+    height: 75px;
+    margin-bottom: 50px;
+  }
+
+  .switchBoard div:last-child {
+    margin-bottom: 30px;
+  }
 }

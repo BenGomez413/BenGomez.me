@@ -29,11 +29,6 @@ function connect() {
   }
 
   ws.onmessage = function ({ data }) {
-    if (data === 'PONG') {
-      console.log('PONG')
-      ws.send('PING')
-    }
-
     const regex = /^(.+)\/(.+):(.+)/g
     let parsedData = regex.exec(data)
     regex.lastIndex = 0 //* RESET REGEX i don't really get why?
@@ -44,7 +39,12 @@ function connect() {
       createTableRow(parsedSender, parsedTarget, parsedCommand)
     }
 
-    logTableContainer.scrollTop = logTableContainer.scrollHeight
+    if (data === 'PONG') {
+      //console.log('PONG')
+      ws.send('PING')
+    } else {
+      logTableContainer.scrollTop = logTableContainer.scrollHeight
+    }
   }
 
   ws.onclose = function (event) {
@@ -217,5 +217,9 @@ function connect() {
       }
     })
   }
+  document.getElementById('sender').addEventListener('input', (e) => {
+    console.log('Sender inputting')
+    ws.send(`${getSender()}/SEVER:RENAME`)
+  })
 }
 connect()
